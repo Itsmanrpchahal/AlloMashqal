@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Translucent">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#33000000</item>
+        <item name="colorPrimaryDark">#000000</item>
+        <item name="colorAccent">#33000000</item>
+
+    </style>
+    <style name="Translucent" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <!--       // <item name="android:textViewStyle">@style/RobotoTextViewStyle</item>-->
+        <!--        // <item name="android:buttonStyle">@style/RobotoButtonStyle</item>-->
+    </style>
+</resources>

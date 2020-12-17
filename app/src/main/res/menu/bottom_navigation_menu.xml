@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:enabled="true"
+        android:icon="@drawable/ic_homepage"
+        android:title="Home Page"/>
+
+    <item
+        android:id="@+id/booking"
+        android:icon="@drawable/ic_mybooking"
+        android:title="Booking"/>
+
+    <item
+        android:id="@+id/Notifications"
+        android:icon="@drawable/ic_notifications"
+        android:title="Notifications"/>
+
+    <item
+        android:id="@+id/myaccount"
+        android:icon="@drawable/ic_myaccount"
+        android:title="My Account"/>
+</menu>

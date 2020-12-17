@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">AlloMashqal</string>
+    <string name="forgot"><u>Forgot your password?</u></string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="eventsservice">Events Service</string>
+    <string name="offers"> Offers</string>
+    <string name="servicename">Service type:</string>
+    <string name="cityname">City:</string>
+    <string name="bookingservice">Booking Services</string>
+    <string name="review">Review:</string>
+</resources>

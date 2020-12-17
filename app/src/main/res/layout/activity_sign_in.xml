@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/shadow"
+    tools:context=".SignIn.SignIn">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:nestedScrollingEnabled="true">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/margin_32dp"
+            android:layout_marginLeft="@dimen/margin_16dp"
+            android:layout_marginRight="@dimen/margin_16dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/union"
+                android:layout_centerHorizontal="true">
+
+            </ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sign In"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/margin_80dp"
+                android:layout_gravity="center"
+                android:textColor="@color/gold"
+                android:textSize="@dimen/textsize_24sp">
+
+            </TextView>
+
+            <EditText
+                android:id="@+id/username_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/transparent"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:hint="Username"
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:padding="@dimen/margin_16dp">
+
+            </EditText>
+
+            <EditText
+                android:id="@+id/password_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/transparent"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:padding="@dimen/margin_16dp">
+
+            </EditText>
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/signin_bt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/roundbt_fill"
+                app:backgroundTint="@color/gold"
+                android:text="Sign In"
+                android:textColor="@color/black"
+                android:textAllCaps="false"
+                android:layout_marginTop="@dimen/margin_8dp">
+
+            </com.google.android.material.button.MaterialButton>
+
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/forgot"
+                android:textAllCaps="false"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:textColor="@color/gold"
+                android:background="@android:color/transparent">
+
+            </com.google.android.material.button.MaterialButton>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</RelativeLayout>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main2"
+    tools:context=".signupsingin.SignUp_SignIn">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/union"
+        android:layout_marginTop="@dimen/margin_32dp"
+        android:layout_centerHorizontal="true">
+
+    </ImageView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/margin_32dp"
+        android:layout_marginRight="@dimen/margin_32dp"
+        android:layout_marginBottom="@dimen/margin_32dp"
+        android:orientation="vertical">
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/signup_bt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/roundbt"
+            app:backgroundTint="@color/gold"
+            android:text="Sign Up"
+            android:textColor="@color/gold"
+            android:textAllCaps="false"
+            android:layout_marginTop="@dimen/margin_8dp">
+
+        </com.google.android.material.button.MaterialButton>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/signin_bt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/roundbt"
+            app:backgroundTint="@color/gold"
+            android:text="Sign In"
+            android:textColor="@color/gold"
+            android:textAllCaps="false"
+            android:layout_marginTop="@dimen/margin_8dp">
+
+        </com.google.android.material.button.MaterialButton>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/signinasvisitor_bt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/roundbt"
+            app:backgroundTint="@color/gold"
+            android:text="Sign in as a visitor"
+            android:textColor="@color/gold"
+            android:textAllCaps="false"
+            android:layout_marginTop="@dimen/margin_8dp">
+
+        </com.google.android.material.button.MaterialButton>
+    </LinearLayout>
+</RelativeLayout>
