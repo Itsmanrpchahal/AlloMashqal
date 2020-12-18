@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".homescreen.EventServicesScreen">
+    tools:context=".homescreen.eventservicesscreen.EventServicesScreen">
 
     <ImageView
         android:id="@+id/image"
@@ -17,10 +17,10 @@
     </ImageView>
 
     <ImageButton
-        android:id="@+id/search_bt"
+        android:id="@+id/back_bt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_search"
+        android:src="@drawable/ic_back"
         android:layout_below="@id/image"
         android:layout_margin="@dimen/margin_16dp"
         android:background="@android:color/transparent">
@@ -61,7 +61,8 @@
         android:id="@+id/recyler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/search_bt"
+        android:layout_below="@id/offer_bt"
+        android:background="@drawable/roundbt"
         android:layout_marginTop="5dp">
 
     </androidx.recyclerview.widget.RecyclerView>

@@ -9,4 +9,10 @@
     <string name="cityname">City:</string>
     <string name="bookingservice">Booking Services</string>
     <string name="review">Review:</string>
+    <string name="price">Price:</string>
+    <string name="select">Select</string>
+    <string name="selectdate">Select a date</string>
+    <string name="selecttime">Select a time</string>
+    <string name="myaccount">My Account</string>
+    <string name="mesg">Chat</string>
 </resources>

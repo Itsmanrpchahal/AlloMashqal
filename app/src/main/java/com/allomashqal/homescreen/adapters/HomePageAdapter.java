@@ -12,15 +12,14 @@ import androidx.appcompat.widget.AppCompatRatingBar;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.allomashqal.R;
-import com.allomashqal.homescreen.EventServicesScreen;
-import com.allomashqal.homescreen.fragments.HomePageFrag;
+import com.allomashqal.homescreen.eventservicesscreen.EventServicesScreen;
 import com.google.android.material.button.MaterialButton;
 import com.makeramen.roundedimageview.RoundedImageView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class HomePageAdapter  extends RecyclerView.Adapter<HomePageAdapter.ViewHolder> implements View.OnClickListener {
+public class HomePageAdapter  extends RecyclerView.Adapter<HomePageAdapter.ViewHolder>  {
 
 Context context;
     public HomePageAdapter(Context context) {
@@ -38,7 +37,12 @@ Context context;
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        holder.itemView.setOnClickListener(this);
+        holder.bookingservice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                context.startActivity(new Intent(context, EventServicesScreen.class));
+            }
+        });
     }
 
     @Override
@@ -46,10 +50,6 @@ Context context;
         return 10;
     }
 
-    @Override
-    public void onClick(View v) {
-        context.startActivity(new Intent(context, EventServicesScreen.class));
-    }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 

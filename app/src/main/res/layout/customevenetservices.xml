@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="5dp"
+    android:background="@drawable/roundbt">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:maxWidth="220dp"
+            android:scaleType="fitXY"
+            app:riv_corner_radius="5dp"
+            android:layout_margin="@dimen/margin_16dp"
+            android:src="@drawable/main1">
+
+        </com.makeramen.roundedimageview.RoundedImageView>
+
+
+        <TextView
+            android:id="@+id/servicetext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Service"
+            android:layout_margin="5dp"
+            android:layout_gravity="center"
+            android:textSize="@dimen/textsize_16sp"
+            android:textColor="@color/white">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/pricetext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/price"
+            android:layout_margin="5dp"
+            android:layout_gravity="center"
+            android:textSize="@dimen/textsize_16sp"
+            android:textColor="@color/gold">
+
+        </TextView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/select_bt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/roundbt"
+            app:backgroundTint="@color/gold"
+            android:text="@string/select"
+            android:textAllCaps="false"
+            android:layout_marginLeft="@dimen/margin_16dp"
+            android:layout_marginRight="@dimen/margin_16dp"
+            android:textColor="@color/gold"
+            android:layout_marginTop="@dimen/margin_8dp">
+
+        </com.google.android.material.button.MaterialButton>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/select_date_bt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/roundbt_fill"
+            app:backgroundTint="@color/gold"
+            android:text="@string/selectdate"
+            android:textAllCaps="false"
+            android:layout_marginLeft="@dimen/margin_16dp"
+            android:layout_marginRight="@dimen/margin_16dp"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/margin_8dp">
+
+        </com.google.android.material.button.MaterialButton>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/select_time_bt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/roundbt_fill"
+            app:backgroundTint="@color/gold"
+            android:text="@string/selecttime"
+            android:textAllCaps="false"
+            android:layout_marginLeft="@dimen/margin_16dp"
+            android:layout_marginRight="@dimen/margin_16dp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="@dimen/margin_16dp"
+            android:layout_marginTop="@dimen/margin_8dp">
+
+        </com.google.android.material.button.MaterialButton>
+    </LinearLayout>
+
+</RelativeLayout>
