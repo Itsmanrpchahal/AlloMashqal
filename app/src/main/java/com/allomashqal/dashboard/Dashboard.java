@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.allomashqal.R;
+import com.allomashqal.Utils.Constants;
 import com.allomashqal.homescreen.HomeScreen;
 import com.allomashqal.sharedpref.BaseActivity;
 
@@ -36,8 +37,10 @@ public class Dashboard extends BaseActivity implements View.OnClickListener {
         if (v==image1)
         {
             startActivity(new Intent(this, HomeScreen.class));
+            setStringVal(Constants.TYPE,"salons");
         }else {
             startActivity(new Intent(this, HomeScreen.class));
+            setStringVal(Constants.TYPE,"eventservices");
         }
     }
 }

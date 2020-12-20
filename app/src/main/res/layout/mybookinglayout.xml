@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/roundbt"
+    android:layout_margin="@dimen/margin_16dp"
+    android:padding="@dimen/margin_16dp">
+
+
+    <TextView
+        android:id="@+id/booking_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textSize="@dimen/textsize_16sp"
+        android:layout_toLeftOf="@id/booking_edit"
+        android:layout_alignParentLeft="true"
+        android:textColor="@color/gold">
+
+    </TextView>
+
+
+
+    <TextView
+        android:id="@+id/booking_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bookingstatus"
+        android:layout_below="@id/booking_name"
+        android:textSize="@dimen/textsize_16sp"
+        android:layout_marginTop="@dimen/margin_8dp"
+        android:layout_toLeftOf="@id/booking_edit"
+        android:layout_alignParentLeft="true"
+        android:textColor="@color/white">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/booking_orderdetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/orderdetails"
+        android:layout_marginTop="@dimen/margin_8dp"
+        android:layout_below="@id/booking_status"
+        android:layout_toLeftOf="@id/booking_edit"
+        android:layout_alignParentLeft="true"
+        android:textColor="@color/white">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/booking_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/booking_orderdetail"
+        android:text="@string/bookingdate"
+        android:textSize="@dimen/textsize_16sp"
+        android:layout_marginTop="@dimen/margin_8dp"
+        android:layout_toLeftOf="@id/booking_edit"
+        android:layout_alignParentLeft="true"
+        android:textColor="@color/gold">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/booking_totalbill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/booking_date"
+        android:text="@string/totalbill"
+        android:textSize="@dimen/textsize_16sp"
+        android:layout_marginTop="@dimen/margin_8dp"
+        android:layout_toLeftOf="@id/booking_edit"
+        android:layout_alignParentLeft="true"
+        android:textColor="@color/gold">
+
+    </TextView>
+
+    <Button
+        android:id="@+id/booking_edit"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="Edit"
+        android:textAllCaps="false"
+        android:textSize="@dimen/textsize_10sp"
+        app:backgroundTint="@color/gold"
+        android:layout_marginLeft="@dimen/margin_8dp"
+        android:background="@drawable/roundbt_fill"
+        android:layout_alignParentRight="true">
+
+    </Button>
+
+    <ImageButton
+        android:id="@+id/clockbt"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/booking_edit"
+        android:background="@drawable/roundbt"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/margin_8dp"
+        android:src="@drawable/ic_clock">
+
+    </ImageButton>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/clockbt"
+        android:layout_alignParentRight="true"
+        android:background="@android:color/transparent"
+        android:drawableTop="@drawable/ic_mesg"
+        android:layout_marginRight="-15dp"
+        android:text="Start a chat"
+        android:textColor="@color/gold"
+        android:layout_marginTop="@dimen/margin_8dp">
+
+    </Button>
+
+
+</RelativeLayout>

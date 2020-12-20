@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/roundbt"
+    android:layout_marginTop="@dimen/margin_8dp"
+    android:padding="@dimen/margin_16dp">
+
+
+        <TextView
+            android:id="@+id/notificationtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="The reservation has been sent"
+            android:textColor="@color/gold"
+            android:textSize="@dimen/textsize_16sp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/bookingstatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_marginTop="@dimen/margin_8dp"
+            android:text="@string/bookingstatus">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/offerdetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_marginTop="@dimen/margin_8dp"
+            android:text="@string/offerdetail">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/bookingdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_marginTop="@dimen/margin_8dp"
+            android:text="@string/bookingdate">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/totalbill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_marginTop="@dimen/margin_8dp"
+            android:text="@string/totalbill">
+
+        </TextView>
+
+
+</LinearLayout>

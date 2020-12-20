@@ -33,38 +33,64 @@
 
 
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:orientation="vertical"
+                android:padding="3dp"
                 android:background="@drawable/roundbt">
 
                 <ImageView
                     android:id="@+id/image1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@drawable/main4"
                     android:scaleType="center">
 
                 </ImageView>
 
-            </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/salons"
+                    android:gravity="center"
+                    android:layout_centerInParent="true"
+                    android:textSize="@dimen/textsize_24sp"
+                    android:textColor="@color/gold"
+                    android:textStyle="bold">
 
-            <LinearLayout
+                </TextView>
+
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:orientation="vertical"
                 android:layout_marginTop="@dimen/margin_32dp"
+                android:padding="3dp"
                 android:background="@drawable/roundbt">
 
                 <ImageView
                     android:id="@+id/image2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@drawable/main3"
                     android:scaleType="center">
 
                 </ImageView>
 
-            </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/eventsservice"
+                    android:gravity="center"
+                    android:layout_centerInParent="true"
+                    android:textSize="@dimen/textsize_24sp"
+                    android:textColor="@color/gold"
+                    android:textStyle="bold">
+
+                </TextView>
+
+            </RelativeLayout>
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

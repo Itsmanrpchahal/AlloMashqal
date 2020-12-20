@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    app:backgroundTint="@color/shadow"
+    android:layout_margin="@dimen/margin_16dp"
+    android:background="@drawable/background">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bookingdetail"
+        android:textColor="@color/gold"
+        android:textSize="@dimen/textsize_24sp"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/margin_16dp">
+
+    </TextView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/gold">
+    </View>
+
+    <TextView
+        android:id="@+id/event_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/title"
+        android:textColor="@color/gold"
+        android:textSize="@dimen/textsize_16sp"
+        android:layout_marginLeft="@dimen/margin_16dp"
+        android:layout_marginTop="@dimen/margin_16dp">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/servicetype"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/servicetype"
+        android:layout_marginLeft="@dimen/margin_16dp"
+        android:layout_marginTop="@dimen/margin_16dp">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/booking_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/bookingdate"
+        android:layout_marginLeft="@dimen/margin_16dp"
+        android:layout_marginTop="@dimen/margin_16dp">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/total_bill"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/totalbill"
+        android:layout_marginLeft="@dimen/margin_16dp"
+        android:layout_marginTop="@dimen/margin_16dp">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/location"
+        android:layout_marginLeft="@dimen/margin_16dp"
+        android:layout_marginTop="@dimen/margin_16dp">
+
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/roundbt"
+        android:layout_margin="@dimen/margin_16dp">
+
+        <com.allomashqal.appmapview.AppMapView
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/map"
+            android:layout_margin="2dp">
+
+        </com.allomashqal.appmapview.AppMapView>
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/gold">
+    </View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="2"
+        android:layout_margin="@dimen/margin_16dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/cancel_bt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/roundbt_fill"
+            app:backgroundTint="@color/gold"
+            android:text="@string/cancel"
+            android:textSize="@dimen/textsize_10sp"
+            android:layout_marginRight="4dp"
+            android:textColor="@color/black"
+            android:textAllCaps="false"
+            android:layout_marginTop="@dimen/margin_8dp">
+
+        </com.google.android.material.button.MaterialButton>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bookingconfirmation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="@dimen/textsize_10sp"
+            android:background="@drawable/roundbt_fill"
+            app:backgroundTint="@color/gold"
+            android:text="@string/bookingconfirmation"
+            android:layout_marginLeft="4dp"
+            android:textColor="@color/black"
+            android:textAllCaps="false"
+            android:layout_marginTop="@dimen/margin_8dp">
+
+        </com.google.android.material.button.MaterialButton>
+    </LinearLayout>
+</LinearLayout>

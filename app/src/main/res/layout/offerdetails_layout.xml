@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background">
+
+    <TextView
+        android:id="@+id/offernametv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/offers"
+        android:textColor="@color/gold"
+        android:textSize="@dimen/textsize_24sp"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/margin_16dp">
+
+    </TextView>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/offernametv"
+        android:background="@color/gold">
+
+    </View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view"
+        android:id="@+id/layout"
+        android:layout_marginTop="@dimen/margin_8dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/offer_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/offertitle"
+            android:textColor="@color/gold"
+            android:textSize="@dimen/textsize_16sp"
+            android:layout_marginLeft="@dimen/margin_16dp"
+            android:layout_marginTop="@dimen/margin_16dp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/offer_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/offerdetail"
+            android:layout_marginLeft="@dimen/margin_16dp"
+            android:layout_marginTop="@dimen/margin_16dp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/offer_period"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/offerperiod"
+            android:layout_marginLeft="@dimen/margin_16dp"
+            android:layout_marginTop="@dimen/margin_16dp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/from"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/from"
+            android:layout_marginLeft="@dimen/margin_16dp"
+            android:layout_marginTop="@dimen/margin_16dp">
+
+        </TextView>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/layout"
+        android:background="@color/gold">
+
+    </View>
+
+    <TextView
+        android:id="@+id/offerproice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/from"
+        android:textColor="@color/gold"
+        android:layout_below="@id/view1"
+        android:gravity="center"
+        android:layout_marginLeft="@dimen/margin_16dp"
+        android:layout_marginTop="@dimen/margin_8dp">
+
+    </TextView>
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="@dimen/margin_8dp"
+        android:layout_below="@id/offerproice"
+        android:background="@color/gold">
+
+    </View>
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/location"
+        android:layout_below="@id/view2"
+        android:layout_marginLeft="@dimen/margin_16dp"
+        android:layout_marginTop="@dimen/margin_16dp">
+
+    </TextView>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/loc"
+        android:layout_below="@id/location"
+        android:layout_margin="@dimen/margin_16dp"
+        android:background="@drawable/roundbt">
+
+        <com.allomashqal.appmapview.AppMapView
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/map"
+            android:layout_margin="2dp">
+
+        </com.allomashqal.appmapview.AppMapView>
+    </RelativeLayout>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/booking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/roundbt_fill"
+        android:layout_margin="@dimen/margin_16dp"
+        app:backgroundTint="@color/gold"
+        android:text="@string/booking"
+        android:textSize="@dimen/textsize_10sp"
+        android:textAllCaps="false"
+        android:padding="@dimen/margin_8dp"
+        android:layout_below="@id/loc">
+
+    </com.google.android.material.button.MaterialButton>
+</RelativeLayout>

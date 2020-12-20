@@ -3,56 +3,257 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".homescreen.fragments.MyAccountFrag">
 
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/union"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/margin_32dp">
 
-    </ImageView>
 
-    <ImageButton
-        android:id="@+id/back_bt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_back"
-        android:layout_below="@id/image"
-        android:layout_margin="@dimen/margin_16dp"
-        android:background="@android:color/transparent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/margin_8dp"
+        android:background="@drawable/roundbt"
+        android:orientation="vertical">
 
-    </ImageButton>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="3dp"
+            android:nestedScrollingEnabled="true">
 
-    <TextView
-        android:id="@+id/mesg_bt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:drawableTop="@drawable/ic_mesg"
-        android:layout_below="@id/image"
-        android:text="@string/mesg"
-        android:drawablePadding="5dp"
-        android:gravity="center"
-        android:textAlignment="center"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="@dimen/margin_16dp"
-        android:background="@android:color/transparent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@color/theme">
 
-    </TextView>
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/profile_picture"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"
+                    app:riv_oval="true"
+                    android:layout_margin="@dimen/margin_32dp"
+                    android:src="@drawable/main1"
+                    android:scaleType="fitXY">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/myaccount"
-        android:textSize="@dimen/textsize_24sp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/image"
-        android:layout_marginTop="@dimen/margin_8dp"
-        android:textColor="@color/gold">
+                </com.makeramen.roundedimageview.RoundedImageView>
 
-    </TextView>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/username_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@android:color/transparent"
+                        android:layout_marginTop="@dimen/margin_16dp"
+                        android:hint="@string/username"
+                        android:layout_toLeftOf="@id/edit_username"
+                        android:inputType="textPersonName"
+                        android:textColor="@color/gold"
+                        android:textColorHint="@color/gold"
+                        android:padding="@dimen/margin_16dp">
+
+                    </EditText>
+
+                    <Button
+                        android:id="@+id/edit_username"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/margin_16dp"
+                        android:layout_centerVertical="true"
+                        android:background="@android:color/transparent"
+                        android:text="Edit"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/textsize_16sp"
+                        android:textAllCaps="false"
+                        android:layout_marginTop="@dimen/margin_16dp"
+                        android:layout_alignParentRight="true">
+
+                    </Button>
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2sp"
+                    android:background="@color/gold">
+
+                </View>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/password_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@android:color/transparent"
+                        android:layout_marginTop="@dimen/margin_16dp"
+                        android:hint="@string/password"
+                        android:layout_toLeftOf="@id/edit_password"
+                        android:inputType="textPassword"
+                        android:textColor="@color/gold"
+                        android:textColorHint="@color/gold"
+                        android:padding="@dimen/margin_16dp">
+
+                    </EditText>
+
+                    <Button
+                        android:id="@+id/edit_password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/margin_16dp"
+                        android:layout_centerVertical="true"
+                        android:background="@android:color/transparent"
+                        android:text="Edit"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/textsize_16sp"
+                        android:textAllCaps="false"
+                        android:layout_marginTop="@dimen/margin_16dp"
+                        android:layout_alignParentRight="true">
+
+                    </Button>
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2sp"
+                    android:background="@color/gold">
+
+                </View>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/number_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@android:color/transparent"
+                        android:layout_marginTop="@dimen/margin_16dp"
+                        android:hint="@string/number"
+                        android:layout_toLeftOf="@id/edit_number"
+                        android:inputType="number"
+                        android:textColor="@color/gold"
+                        android:textColorHint="@color/gold"
+                        android:padding="@dimen/margin_16dp">
+
+                    </EditText>
+
+                    <Button
+                        android:id="@+id/edit_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/margin_16dp"
+                        android:layout_centerVertical="true"
+                        android:background="@android:color/transparent"
+                        android:text="Edit"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/textsize_16sp"
+                        android:textAllCaps="false"
+                        android:layout_marginTop="@dimen/margin_16dp"
+                        android:layout_alignParentRight="true">
+
+                    </Button>
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2sp"
+                    android:background="@color/gold">
+
+                </View>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/email_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@android:color/transparent"
+                        android:layout_marginTop="@dimen/margin_16dp"
+                        android:hint="@string/email"
+                        android:layout_toLeftOf="@id/edit_email"
+                        android:inputType="textEmailAddress"
+                        android:textColor="@color/gold"
+                        android:textColorHint="@color/gold"
+                        android:padding="@dimen/margin_16dp">
+
+                    </EditText>
+
+                    <Button
+                        android:id="@+id/edit_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/margin_16dp"
+                        android:layout_centerVertical="true"
+                        android:background="@android:color/transparent"
+                        android:text="Edit"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/textsize_16sp"
+                        android:textAllCaps="false"
+                        android:layout_marginTop="@dimen/margin_16dp"
+                        android:layout_alignParentRight="true">
+
+                    </Button>
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2sp"
+                    android:background="@color/gold">
+
+                </View>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="2"
+                    android:layout_margin="@dimen/margin_16dp">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/cancel_bt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/roundbt_fill"
+                        app:backgroundTint="@color/gold"
+                        android:text="Cancel"
+                        android:layout_margin="@dimen/margin_8dp"
+                        android:textSize="@dimen/textsize_10sp"
+                        android:textColor="@color/black"
+                        android:textAllCaps="false"
+                        android:layout_marginTop="@dimen/margin_8dp">
+
+                    </com.google.android.material.button.MaterialButton>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/signin_bt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="@dimen/textsize_10sp"
+                        android:background="@drawable/roundbt_fill"
+                        app:backgroundTint="@color/gold"
+                        android:text="Save Edits"
+                        android:layout_margin="@dimen/margin_8dp"
+                        android:textColor="@color/black"
+                        android:textAllCaps="false"
+                        android:layout_marginTop="@dimen/margin_8dp">
+
+                    </com.google.android.material.button.MaterialButton>
+                </LinearLayout>
+            </LinearLayout>
+
+        </ScrollView>
+    </LinearLayout>
 
 
 </RelativeLayout>

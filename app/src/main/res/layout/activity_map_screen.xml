@@ -45,6 +45,8 @@
            <com.allomashqal.appmapview.AppMapView
                android:layout_width="match_parent"
                android:layout_height="290dp"
+               android:layout_margin="2dp"
+               android:background="@drawable/map"
                android:id="@+id/mapview">
 
            </com.allomashqal.appmapview.AppMapView>

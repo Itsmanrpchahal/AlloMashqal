@@ -12,6 +12,7 @@ import androidx.appcompat.widget.AppCompatRatingBar;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.allomashqal.R;
+import com.allomashqal.Utils.Constants;
 import com.allomashqal.homescreen.eventservicesscreen.EventServicesScreen;
 import com.google.android.material.button.MaterialButton;
 import com.makeramen.roundedimageview.RoundedImageView;
@@ -22,6 +23,7 @@ import butterknife.ButterKnife;
 public class HomePageAdapter  extends RecyclerView.Adapter<HomePageAdapter.ViewHolder>  {
 
 Context context;
+String type;
     public HomePageAdapter(Context context) {
         this.context = context;
     }
@@ -36,6 +38,13 @@ Context context;
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
+        if (Constants.TYPE.equals("salons"))
+        {
+            holder.eventname.setText(R.string.salonsname);
+        } else  {
+            holder.eventname.setText(R.string.eventname);
+        }
 
         holder.bookingservice.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -25,7 +25,7 @@ public class BaseFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        sharedPreferences=context.getSharedPreferences("UserToken", Context.MODE_PRIVATE);
+        sharedPreferences=getContext().getSharedPreferences("UserToken", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         return super.onCreateView(inflater, container, savedInstanceState);
     }

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background"
+    android:layout_gravity="center"
+    android:layout_margin="@dimen/margin_16dp"
+    android:padding="@dimen/margin_16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bookingconfirmation"
+        android:textColor="@color/gold"
+        android:textSize="@dimen/textsize_16sp"
+        android:layout_gravity="center">
+
+    </TextView>
+
+
+    <LinearLayout
+        android:layout_width="280dp"
+        android:layout_height="220dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:padding="40dp"
+        android:background="@drawable/roundbt_fill"
+        android:orientation="vertical"
+        android:src="@drawable/ic_tick">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/reservation"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:textSize="@dimen/textsize_16sp"
+            android:layout_gravity="center">
+
+        </TextView>
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_tick"
+            android:layout_gravity="center">
+
+        </ImageView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="2"
+        android:layout_marginRight="@dimen/textsize_16sp"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="@dimen/margin_16dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/cancel_bt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/roundbt_fill"
+            app:backgroundTint="@color/gold"
+            android:text="@string/canceltext"
+            android:textSize="@dimen/textsize_10sp"
+            android:layout_margin="@dimen/margin_8dp"
+            android:textColor="@color/black"
+            android:textAllCaps="false"
+            android:layout_marginTop="@dimen/margin_8dp">
+
+        </com.google.android.material.button.MaterialButton>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/signin_bt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="@dimen/textsize_10sp"
+            android:background="@drawable/roundbt_fill"
+            app:backgroundTint="@color/gold"
+            android:text="Save Edits"
+            android:layout_margin="@dimen/margin_8dp"
+            android:textColor="@color/black"
+            android:textAllCaps="false"
+            android:layout_marginTop="@dimen/margin_8dp">
+
+        </com.google.android.material.button.MaterialButton>
+    </LinearLayout>
+</LinearLayout>

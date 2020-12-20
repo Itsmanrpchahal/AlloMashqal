@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background"
+    android:layout_margin="@dimen/margin_8dp"
+    android:padding="@dimen/margin_16dp">
+
+
+
+        <TextView
+            android:id="@+id/eventname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/offers"
+            android:textColor="@color/gold"
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="@dimen/margin_8dp"
+            android:layout_toLeftOf="@id/serviceimage"
+            android:textSize="@dimen/textsize_16sp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/servicename"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/offerdetail"
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="@dimen/margin_8dp"
+            android:layout_toLeftOf="@id/serviceimage"
+            android:layout_below="@id/eventname"
+            android:layout_marginTop="@dimen/margin_32dp"
+            android:textColor="@color/gold">
+
+        </TextView>
+
+
+        <TextView
+            android:id="@+id/cityname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/salonsname"
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="@dimen/margin_8dp"
+            android:layout_toLeftOf="@id/serviceimage"
+            android:layout_below="@id/servicename"
+            android:layout_marginTop="@dimen/margin_16dp"
+            android:textColor="@color/gold">
+
+        </TextView>
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/serviceimage"
+            android:layout_width="170dp"
+            android:layout_height="140dp"
+            android:layout_alignParentRight="true"
+            app:riv_border_color="@android:color/transparent"
+            app:riv_corner_radius="5dp"
+            android:background="@drawable/roundbt"
+            android:scaleType="fitXY"
+            android:padding="2dp"
+            android:layout_marginBottom="50dp"
+            android:src="@drawable/main2">
+
+        </com.makeramen.roundedimageview.RoundedImageView>
+    </RelativeLayout>

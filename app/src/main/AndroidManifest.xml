@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Translucent">
-        <activity android:name=".homescreen.eventservicesscreen.EventServicesScreen"></activity>
+        <activity android:name=".homescreen.eventservicesscreen.EventServicesScreen" />
         <activity android:name=".homescreen.HomeScreen" />
         <activity android:name=".dashboard.Dashboard" />
         <activity android:name=".MapScreen.MapScreen" />

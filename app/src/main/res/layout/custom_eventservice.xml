@@ -103,6 +103,7 @@
         android:backgroundTint="@color/gold"
         app:backgroundTint="@color/gold"
         android:text="@string/bookingservice"
+        android:textSize="@dimen/textsize_10sp"
         android:textAllCaps="false"
         android:layout_alignParentRight="true">
 

@@ -34,12 +34,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         arabic_bt.setOnClickListener(this);
         english_bt.setOnClickListener(this);
 
-        if (getStringVal(Constants.LOCALE).equals("ar"))
-        {
-            Toast.makeText(this,"Arabic",Toast.LENGTH_LONG).show();
-        }else {
-            Toast.makeText(this,"English",Toast.LENGTH_LONG).show();
-        }
+//        if (getStringVal(Constants.LOCALE).equals("ar"))
+//        {
+//            Toast.makeText(this,"Arabic",Toast.LENGTH_LONG).show();
+//        }else {
+//            Toast.makeText(this,"English",Toast.LENGTH_LONG).show();
+//        }
     }
 
     @Override
