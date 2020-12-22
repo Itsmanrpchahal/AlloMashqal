@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="signup">كارتشلا</string>
+    <string name="signin">تسجيل الدخول</string>
+    <string name="signinvistor">تسجيل الدخول كزائر</string>
+    <string name="username">اسم المستخدم</string>
+    <string name="password">كلمه السر</string>
+    <string name="number">رقم</string>
+    <string name="email">البريد الإلكتروني</string>
+    <string name="mobileno">رقم الهاتف المحمول</string>
+    <string name="forgot"><u>نسيت رقمك السري؟</u></string>
+    <string name="maploc">الرجاء تحديد موقعك على الخريطة</string>
+    <string name="next">التالى</string>
+    <string name="salons">صالونات</string>
+    <string name="eventsservice">خدمة الأحداث</string>
+    <string name="offers">عروض</string>
+    <string name="booking">الحجز</string>
+    <string name="myaccount">حسابي</string>
+    <string name="notications">إشعارات</string>
+    <string name="homepage">الصفحة الرئيسية</string>
+    <string name="edit">تعديل</string>
+    <string name="saveedits">احفظ عمليات التحرير</string>
+    <string name="canceltext">إلغاء</string>
+    <string name="startchat">ابدأ محادثة</string>
+    <string name="name">اسم</string>
+    <string name="bookingstatus">وضع الحجز:</string>
+    <string name="orderdetails">تفاصيل الطلب:</string>
+    <string name="bookingdate">تاريخ الحجز:</string>
+    <string name="totalbill">إجمالي الفاتورة:</string>
+    <string name="eventname">اسم الحدث</string>
+    <string name="servicename">نوع الخدمة:</string>
+    <string name="cityname">مدينة:</string>
+    <string name="review">مراجعة:</string>
+    <string name="bookingservice">خدمات الحجز</string>
+    <string name="reservationsent">تم إرسال الحجز</string>
+    <string name="offerdetail">تفاصيل العروض:</string>
+    <string name="salonsname">اسم الصالونات</string>
+    <string name="price">السعر:</string>
+    <string name="select">تحديد</string>
+    <string name="selectdate">اختر التاريخ</string>
+    <string name="selecttime">اختر وقتًا</string>
+</resources>

@@ -13,10 +13,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/eventname"
+        android:gravity="right"
         android:textColor="@color/gold"
-        android:layout_alignParentLeft="true"
-        android:layout_marginRight="@dimen/margin_8dp"
-        android:layout_toLeftOf="@id/serviceimage"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="@dimen/margin_8dp"
+        android:layout_toRightOf="@id/serviceimage"
         android:textSize="@dimen/textsize_16sp">
 
     </TextView>
@@ -26,9 +27,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/servicename"
-        android:layout_alignParentLeft="true"
-        android:layout_marginRight="@dimen/margin_8dp"
-        android:layout_toLeftOf="@id/serviceimage"
+        android:gravity="right"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="@dimen/margin_8dp"
+        android:layout_toRightOf="@id/serviceimage"
         android:layout_below="@id/eventname"
         android:layout_marginTop="@dimen/margin_32dp"
         android:textColor="@color/gold">
@@ -41,9 +43,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/cityname"
-        android:layout_alignParentLeft="true"
-        android:layout_marginRight="@dimen/margin_8dp"
-        android:layout_toLeftOf="@id/serviceimage"
+        android:gravity="right"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="@dimen/margin_8dp"
+        android:layout_toRightOf="@id/serviceimage"
         android:layout_below="@id/servicename"
         android:layout_marginTop="@dimen/margin_16dp"
         android:textColor="@color/gold">
@@ -54,7 +57,7 @@
         android:id="@+id/serviceimage"
         android:layout_width="170dp"
         android:layout_height="170dp"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
         app:riv_border_color="@android:color/transparent"
         app:riv_corner_radius="5dp"
         android:scaleType="fitXY"
@@ -67,6 +70,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_alignParentRight="true"
         android:layout_below="@id/serviceimage"
         android:layout_marginTop="@dimen/margin_16dp">
 
@@ -90,6 +94,7 @@
             style="@style/Widget.AppCompat.RatingBar.Small">
 
         </androidx.appcompat.widget.AppCompatRatingBar>
+
     </LinearLayout>
 
 
@@ -105,7 +110,7 @@
         android:text="@string/bookingservice"
         android:textSize="@dimen/textsize_10sp"
         android:textAllCaps="false"
-        android:layout_alignParentRight="true">
+        android:layout_alignParentLeft="true">
 
     </com.google.android.material.button.MaterialButton>
 </RelativeLayout>

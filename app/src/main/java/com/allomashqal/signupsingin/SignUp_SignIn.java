@@ -2,7 +2,9 @@ package com.allomashqal.signupsingin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -11,6 +13,7 @@ import com.allomashqal.R;
 import com.allomashqal.SignIn.SignIn;
 import com.allomashqal.SignUp.SignUp;
 import com.allomashqal.Utils.Constants;
+import com.allomashqal.helper.LocaleHelper;
 import com.allomashqal.sharedpref.BaseActivity;
 import com.google.android.material.button.MaterialButton;
 
@@ -25,17 +28,33 @@ public class SignUp_SignIn extends BaseActivity implements View.OnClickListener 
     MaterialButton signin_bt;
     @BindView(R.id.signinasvisitor_bt)
     MaterialButton signinasvisitor_bt;
-    String locale="";
+    String locale;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up__sign_in);
-        ButterKnife.bind(this);
         locale = getStringVal(Constants.LOCALE);
 
+        setContentView(R.layout.activity_sign_up__sign_in);
+        ButterKnife.bind(this);
 
+
+        UpdateViews(locale);
         listeners();
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleHelper.onAttach(base));
+    }
+
+
+    private void UpdateViews(String locale) {
+        Context context = LocaleHelper.setLocale(this,locale);
+        Resources resources = context.getResources();
+
+        signup_bt.setText(resources.getText(R.string.signup));
+        signin_bt.setText(resources.getText(R.string.signin));
     }
 
     private void listeners() {

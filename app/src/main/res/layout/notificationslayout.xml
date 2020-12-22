@@ -12,7 +12,7 @@
             android:id="@+id/notificationtitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="The reservation has been sent"
+            android:text="@string/reservationsent"
             android:textColor="@color/gold"
             android:textSize="@dimen/textsize_16sp">
 

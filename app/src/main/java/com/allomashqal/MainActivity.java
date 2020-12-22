@@ -2,12 +2,15 @@ package com.allomashqal;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
 import com.allomashqal.Utils.Constants;
+import com.allomashqal.helper.LocaleHelper;
 import com.allomashqal.sharedpref.BaseActivity;
 import com.allomashqal.signupsingin.SignUp_SignIn;
 import com.google.android.material.button.MaterialButton;
@@ -43,13 +46,23 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     }
 
     @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleHelper.onAttach(base));
+    }
+
+    @Override
     public void onClick(View v) {
         if (v==arabic_bt)
         {
+            Context context = LocaleHelper.setLocale(this, "ar");
+            Resources resources = context.getResources();
             startActivity(new Intent(this, SignUp_SignIn.class).putExtra(Constants.LOCALE,"ar"));
             setStringVal(Constants.LOCALE,"ar");
+
         }else if (v==english_bt)
         {
+            Context context = LocaleHelper.setLocale(this, "en");
+            Resources resources = context.getResources();
             startActivity(new Intent(this,SignUp_SignIn.class).putExtra(Constants.LOCALE,"en"));
             setStringVal(Constants.LOCALE,"en");
         }

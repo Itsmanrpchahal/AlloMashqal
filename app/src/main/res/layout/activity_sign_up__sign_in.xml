@@ -7,6 +7,8 @@
     android:background="@drawable/main2"
     tools:context=".signupsingin.SignUp_SignIn">
 
+
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,7 +34,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/roundbt"
             app:backgroundTint="@color/gold"
-            android:text="Sign Up"
+            android:text="@string/signup"
             android:textColor="@color/gold"
             android:textAllCaps="false"
             android:layout_marginTop="@dimen/margin_8dp">
@@ -45,7 +47,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/roundbt"
             app:backgroundTint="@color/gold"
-            android:text="Sign In"
+            android:text="@string/signin"
             android:textColor="@color/gold"
             android:textAllCaps="false"
             android:layout_marginTop="@dimen/margin_8dp">
@@ -58,7 +60,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/roundbt"
             app:backgroundTint="@color/gold"
-            android:text="Sign in as a visitor"
+            android:text="@string/signinvistor"
             android:textColor="@color/gold"
             android:textAllCaps="false"
             android:layout_marginTop="@dimen/margin_8dp">

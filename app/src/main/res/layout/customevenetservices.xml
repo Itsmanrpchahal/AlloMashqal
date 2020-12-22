@@ -28,7 +28,7 @@
             android:id="@+id/servicetext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Service"
+            android:text="@string/servicename"
             android:layout_margin="5dp"
             android:layout_gravity="center"
             android:textSize="@dimen/textsize_16sp"

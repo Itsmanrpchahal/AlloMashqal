@@ -10,7 +10,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.icu.text.SimpleDateFormat;
 import android.os.Build;
 import android.os.Bundle;
@@ -27,6 +29,7 @@ import android.widget.TextView;
 
 import com.allomashqal.R;
 import com.allomashqal.Utils.Constants;
+import com.allomashqal.helper.LocaleHelper;
 import com.allomashqal.homescreen.adapters.TimeAdapter;
 import com.allomashqal.homescreen.eventservicesscreen.EventServicesScreen;
 import com.allomashqal.homescreen.fragments.HomePageFrag;
@@ -64,6 +67,7 @@ public class HomeScreen extends BaseActivity {
     Dialog offerDialog,offerDetails,datetimeDialog,confirmation_dialog;
     OffersAdapter offersAdapter;
     TimeAdapter timeAdapter;
+    String locale;
 
     DatePickerDialog.OnDateSetListener dateSetListener;
     Calendar calendar;
@@ -73,7 +77,7 @@ public class HomeScreen extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
         ButterKnife.bind(this);
-
+        locale = getStringVal(Constants.LOCALE);
         type = getStringVal(Constants.TYPE);
         manager = getSupportFragmentManager();
         calendar = Calendar.getInstance();
@@ -89,6 +93,19 @@ public class HomeScreen extends BaseActivity {
         }
 
         listeners();
+        UpdateViews(locale);
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleHelper.onAttach(base));
+    }
+
+
+    private void UpdateViews(String locale) {
+        Context context = LocaleHelper.setLocale(this, locale);
+        Resources resources = context.getResources();
+        offer_bt.setText(resources.getText(R.string.offers));
     }
 
     private void listeners() {

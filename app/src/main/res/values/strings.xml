@@ -42,4 +42,16 @@
     <string name="from">From:</string>
     <string name="booking">Booking</string>
     <string name="cancelbooking">Cancel Booking</string>
+    <string name="signup">Sign Up</string>
+    <string name="signin">Sign In</string>
+    <string name="signinvistor">Sign in as a visitor</string>
+    <string name="mobileno">Mobile Number</string>
+    <string name="maploc">Please select your location on the map</string>
+    <string name="next">Next</string>
+    <string name="homepage">Home Page</string>
+    <string name="edit">Edit</string>
+    <string name="saveedits">Save Edits</string>
+    <string name="startchat">Start a chat</string>
+    <string name="name">Name</string>
+    <string name="reservationsent">The reservation has been sent</string>
 </resources>

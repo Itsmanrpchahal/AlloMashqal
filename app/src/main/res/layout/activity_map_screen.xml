@@ -25,9 +25,10 @@
         </ImageView>
 
         <TextView
+            android:id="@+id/maploc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Please select your location on the map"
+            android:text="@string/maploc"
             android:gravity="center"
             android:textColor="@color/gold"
             android:layout_marginTop="@dimen/margin_80dp"
@@ -59,7 +60,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/roundbt_fill"
             app:backgroundTint="@color/gold"
-            android:text="Next"
+            android:text="@string/next"
             android:textColor="@color/black"
             android:textAllCaps="false"
             android:layout_marginLeft="@dimen/margin_16dp"

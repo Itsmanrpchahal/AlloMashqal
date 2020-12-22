@@ -5,7 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/shadow"
-    tools:context=".SignIn.SignIn">
+    tools:context=".SignUp.SignUp">
+
+
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,24 +21,24 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_marginTop="@dimen/margin_32dp"
             android:layout_marginLeft="@dimen/margin_16dp"
             android:layout_marginRight="@dimen/margin_16dp">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:src="@drawable/union"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_32dp"
                 android:layout_centerHorizontal="true">
 
             </ImageView>
 
             <TextView
-                android:id="@+id/signin_tv"
+                android:id="@+id/signup_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/signin"
+                android:text="@string/signup"
                 android:gravity="center"
                 android:layout_marginTop="@dimen/margin_80dp"
                 android:layout_gravity="center"
@@ -51,6 +54,7 @@
                 android:backgroundTint="@android:color/transparent"
                 android:layout_marginTop="@dimen/margin_16dp"
                 android:hint="@string/username"
+                android:layout_gravity="right"
                 android:inputType="textPersonName"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
@@ -65,7 +69,38 @@
                 android:backgroundTint="@android:color/transparent"
                 android:layout_marginTop="@dimen/margin_16dp"
                 android:hint="@string/password"
-                android:inputType="textPassword"
+                android:inputType="textWebPassword"
+                android:textAlignment="textEnd"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:padding="@dimen/margin_16dp">
+
+            </EditText>
+
+            <EditText
+                android:id="@+id/mobileno_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:textAlignment="textEnd"
+                android:backgroundTint="@android:color/transparent"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:hint="@string/mobileno"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:padding="@dimen/margin_16dp">
+
+            </EditText>
+
+            <EditText
+                android:id="@+id/email_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/transparent"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:hint="@string/email"
+                android:gravity="right"
+                android:inputType="textEmailAddress"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:padding="@dimen/margin_16dp">
@@ -74,12 +109,12 @@
 
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/signin_bt"
+                android:id="@+id/signup_bt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/roundbt_fill"
                 app:backgroundTint="@color/gold"
-                android:text="@string/signin"
+                android:text="@string/signup"
                 android:textColor="@color/black"
                 android:textAllCaps="false"
                 android:layout_marginTop="@dimen/margin_16dp">
@@ -87,23 +122,8 @@
             </com.google.android.material.button.MaterialButton>
 
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/forgotpassword"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/forgot"
-                android:textAllCaps="false"
-                android:layout_marginTop="@dimen/margin_16dp"
-                android:textColor="@color/gold"
-                android:background="@android:color/transparent">
-
-            </com.google.android.material.button.MaterialButton>
-
         </LinearLayout>
 
     </ScrollView>
-
-
 
 </RelativeLayout>

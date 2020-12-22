@@ -35,9 +35,10 @@
                 </ImageView>
 
                 <TextView
+                    android:id="@+id/signup_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sign Up"
+                    android:text="@string/signup"
                     android:gravity="center"
                     android:layout_marginTop="@dimen/margin_80dp"
                     android:layout_gravity="center"
@@ -52,7 +53,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@android:color/transparent"
                     android:layout_marginTop="@dimen/margin_16dp"
-                    android:hint="Username"
+                    android:hint="@string/username"
                     android:inputType="textPersonName"
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
@@ -66,8 +67,8 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@android:color/transparent"
                     android:layout_marginTop="@dimen/margin_16dp"
-                    android:hint="Password"
-                    android:inputType="textPassword"
+                    android:hint="@string/password"
+                    android:inputType="textWebPassword"
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
                     android:padding="@dimen/margin_16dp">
@@ -81,7 +82,7 @@
                     android:inputType="phone"
                     android:backgroundTint="@android:color/transparent"
                     android:layout_marginTop="@dimen/margin_16dp"
-                    android:hint="Mobile Number"
+                    android:hint="@string/mobileno"
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
                     android:padding="@dimen/margin_16dp">
@@ -94,7 +95,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@android:color/transparent"
                     android:layout_marginTop="@dimen/margin_16dp"
-                    android:hint="Email"
+                    android:hint="@string/email"
                     android:inputType="textEmailAddress"
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
@@ -109,10 +110,10 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/roundbt_fill"
                     app:backgroundTint="@color/gold"
-                    android:text="Sign Up"
+                    android:text="@string/signup"
                     android:textColor="@color/black"
                     android:textAllCaps="false"
-                    android:layout_marginTop="@dimen/margin_8dp">
+                    android:layout_marginTop="@dimen/margin_16dp">
 
                 </com.google.android.material.button.MaterialButton>
 
