@@ -17,6 +17,7 @@ import android.icu.text.SimpleDateFormat;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -228,6 +229,12 @@ public class HomeScreen extends BaseActivity {
                 recyler_view = datetimeDialog.findViewById(R.id.recyler_view);
                 confirm_button = datetimeDialog.findViewById(R.id.confirm_button);
                 select_date = datetimeDialog.findViewById(R.id.select_date);
+
+                if (locale.equals("ar"))
+                {
+                    select_date.setGravity(Gravity.RIGHT);
+                }
+
                 cancel_bt = datetimeDialog.findViewById(R.id.cancel_bt);
                 cancel_bt.setOnClickListener(new View.OnClickListener() {
                     @Override

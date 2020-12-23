@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -113,6 +114,14 @@ public class EventServicesScreen extends BaseActivity {
         total_bill = dialog.findViewById(R.id.total_bill);
         location = dialog.findViewById(R.id.location);
 
+        if (locale.equals("ar"))
+        {
+            bookingdetailtv.setGravity(Gravity.RIGHT);
+            servicetype.setGravity(Gravity.RIGHT);
+            booking_date.setGravity(Gravity.RIGHT);
+            total_bill.setGravity(Gravity.RIGHT);
+            location.setGravity(Gravity.RIGHT);
+        }
         bookingdetailtv.setText(resources.getText(R.string.bookingdetail));
         servicetype.setText(resources.getText(R.string.servicetype));
         booking_date.setText(resources.getText(R.string.bookingdate));
@@ -120,7 +129,13 @@ public class EventServicesScreen extends BaseActivity {
         location.setText(resources.getText(R.string.location));
         cancel_bt.setText(resources.getText(R.string.cancel));
         bookingconfirmation.setText(resources.getText(R.string.bookingconfirmation));
-        event_title.setText(type);
+        if (type.equals("salons"))
+        {
+            event_title.setText(R.string.salons);
+        }else  {
+            event_title.setText(R.string.eventsservice);
+        }
+
 
         cancel_bt.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -84,7 +84,7 @@
             android:textSize="@dimen/textsize_10sp"
             android:background="@drawable/roundbt_fill"
             app:backgroundTint="@color/gold"
-            android:text="Save Edits"
+            android:text="@string/saveedits"
             android:layout_margin="@dimen/margin_8dp"
             android:textColor="@color/black"
             android:textAllCaps="false"

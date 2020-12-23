@@ -40,4 +40,16 @@
     <string name="select">تحديد</string>
     <string name="selectdate">اختر التاريخ</string>
     <string name="selecttime">اختر وقتًا</string>
+    <string name="bookingconfirmation">تأكيد الحجز</string>
+    <string name="cancel">إلغاء الحجوزات</string>
+    <string name="location">موقعك</string>
+    <string name="servicetype">نوع الخدمة:</string>
+    <string name="bookingdetail">تفاصيل الحجز</string>
+    <string name="reservation">تم إرسال الحجز الخاص بك \ n بنجاح</string>
+    <string name="from">من عند:</string>
+    <string name="offerperiod">فترة العرض:</string>
+    <string name="offertitle">عنوان العرض</string>
+    <string name="offerprice">سعر العرض</string>
+    <string name="dateformat">DD / MM / YYYY</string>
+    <string name="cancelbooking">إلغاء الحجز</string>
 </resources>

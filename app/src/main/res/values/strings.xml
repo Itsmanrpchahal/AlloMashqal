@@ -54,4 +54,6 @@
     <string name="startchat">Start a chat</string>
     <string name="name">Name</string>
     <string name="reservationsent">The reservation has been sent</string>
+    <string name="offerprice">Offer price</string>
+    <string name="dateformat">DD/MM/YYYY</string>
 </resources>
