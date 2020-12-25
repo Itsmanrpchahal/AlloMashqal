@@ -1,6 +1,7 @@
 package com.allomashqal.homescreen.fragments;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 
@@ -12,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.allomashqal.R;
 import com.allomashqal.Utils.Constants;
@@ -31,14 +33,18 @@ public class MyAccountFrag extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view =  inflater.inflate(R.layout.fragment_my_account, container, false);
-        ButterKnife.bind(this,view);
+
+
+
         locale = getStringVal(Constants.LOCALE);
         if (locale.equals("ar"))
         {
-            password_et.setGravity(Gravity.END);
-        }
+            view =  inflater.inflate(R.layout.fragment_my_account_arabic, container, false);
 
+        }else  {
+            view =  inflater.inflate(R.layout.fragment_my_account, container, false);
+        }
+        ButterKnife.bind(this,view);
 
         return view;
     }

@@ -7,90 +7,108 @@
     android:background="@color/shadow"
     tools:context=".dashboard.Dashboard">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:src="@drawable/union"
-        android:layout_marginTop="@dimen/margin_32dp"
-        android:layout_centerHorizontal="true">
-
-    </ImageView>
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:nestedScrollingEnabled="true">
+        android:nestedScrollingEnabled="false">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/margin_32dp"
-            android:layout_marginLeft="@dimen/margin_16dp"
-            android:layout_marginRight="@dimen/margin_16dp">
+            android:layout_height="match_parent">
 
-
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:padding="3dp"
-                android:background="@drawable/roundbt">
-
-                <ImageView
-                    android:id="@+id/image1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/main4"
-                    android:scaleType="center">
-
-                </ImageView>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/salons"
-                    android:gravity="center"
-                    android:layout_centerInParent="true"
-                    android:textSize="@dimen/textsize_24sp"
-                    android:textColor="@color/gold"
-                    android:textStyle="bold">
-
-                </TextView>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/union"
                 android:layout_marginTop="@dimen/margin_32dp"
-                android:padding="3dp"
-                android:background="@drawable/roundbt">
+                android:layout_centerHorizontal="true">
 
-                <ImageView
-                    android:id="@+id/image2"
+            </ImageView>
+
+
+            <LinearLayout
+                android:layout_below="@id/image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_32dp"
+                android:layout_marginLeft="@dimen/margin_16dp"
+                android:layout_marginRight="@dimen/margin_16dp">
+
+
+
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/main3"
-                    android:scaleType="center">
-
-                </ImageView>
-
-                <TextView
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/eventsservice"
-                    android:gravity="center"
-                    android:layout_centerInParent="true"
-                    android:textSize="@dimen/textsize_24sp"
-                    android:textColor="@color/gold"
-                    android:textStyle="bold">
+                    android:padding="3dp"
+                    android:background="@drawable/roundbt">
 
-                </TextView>
+                    <ImageView
+                        android:id="@+id/image1"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:minHeight="180dp"
+                        android:maxHeight="250dp"
+                        android:background="@drawable/main4"
+                        android:scaleType="center">
 
-            </RelativeLayout>
-        </LinearLayout>
+                    </ImageView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/salons"
+                        android:gravity="center"
+                        android:layout_centerInParent="true"
+                        android:textSize="@dimen/textsize_24sp"
+                        android:textColor="@color/gold"
+                        android:textStyle="bold">
+
+                    </TextView>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_marginTop="@dimen/margin_32dp"
+                    android:padding="3dp"
+                    android:background="@drawable/roundbt">
+
+                    <ImageView
+                        android:id="@+id/image2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/main3"
+                        android:scaleType="center">
+
+                    </ImageView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/eventsservice"
+                        android:gravity="center"
+                        android:layout_centerInParent="true"
+                        android:textSize="@dimen/textsize_24sp"
+                        android:textColor="@color/gold"
+                        android:textStyle="bold">
+
+                    </TextView>
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_16dp"></View>
+            </LinearLayout>
+
+        </RelativeLayout>
     </ScrollView>
+
+
+
 </RelativeLayout>

@@ -5,70 +5,78 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/shadow"
+    android:padding="@dimen/margin_16dp"
     tools:context=".MapScreen.MapScreen">
 
 
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/union"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/margin_32dp"
-            android:layout_centerHorizontal="true">
-
-        </ImageView>
-
-        <TextView
-            android:id="@+id/maploc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/maploc"
-            android:gravity="center"
-            android:textColor="@color/gold"
-            android:layout_marginTop="@dimen/margin_80dp"
-            android:textSize="@dimen/textsize_24sp">
-
-        </TextView>
+        android:nestedScrollingEnabled="true">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@drawable/roundbt"
-            android:layout_margin="@dimen/margin_16dp">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-           <com.allomashqal.appmapview.AppMapView
-               android:layout_width="match_parent"
-               android:layout_height="290dp"
-               android:layout_margin="2dp"
-               android:background="@drawable/map"
-               android:id="@+id/mapview">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/union"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_32dp"
+                android:layout_centerHorizontal="true">
 
-           </com.allomashqal.appmapview.AppMapView>
-            
+            </ImageView>
+
+            <TextView
+                android:id="@+id/maploc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/maploc"
+                android:gravity="center"
+                android:textColor="@color/gold"
+                android:layout_marginTop="@dimen/margin_80dp"
+                android:textSize="@dimen/textsize_24sp">
+
+            </TextView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/roundbt"
+                android:layout_margin="@dimen/margin_16dp">
+
+                <com.allomashqal.appmapview.AppMapView
+                    android:layout_width="match_parent"
+                    android:layout_height="290dp"
+                    android:layout_margin="2dp"
+                    android:background="@drawable/map"
+                    android:id="@+id/mapview">
+
+                </com.allomashqal.appmapview.AppMapView>
+
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/next_bt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/roundbt_fill"
+                app:backgroundTint="@color/gold"
+                android:text="@string/next"
+                android:textColor="@color/black"
+                android:textAllCaps="false"
+                android:layout_marginLeft="@dimen/margin_16dp"
+                android:layout_marginRight="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_32dp">
+
+            </com.google.android.material.button.MaterialButton>
+
         </LinearLayout>
+    </ScrollView>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/next_bt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/roundbt_fill"
-            app:backgroundTint="@color/gold"
-            android:text="@string/next"
-            android:textColor="@color/black"
-            android:textAllCaps="false"
-            android:layout_marginLeft="@dimen/margin_16dp"
-            android:layout_marginRight="@dimen/margin_16dp"
-            android:layout_marginTop="@dimen/margin_32dp">
 
-        </com.google.android.material.button.MaterialButton>
-
-    </LinearLayout>
 
 </RelativeLayout>
