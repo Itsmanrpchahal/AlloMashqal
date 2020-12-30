@@ -79,10 +79,10 @@
             app:backgroundTint="@color/white"
             android:backgroundTint="@color/white"
             app:menu="@menu/bottom_navigation_menu"
-            app:itemIconTint="@color/gold"
-            app:itemTextColor="@color/gold"
+            app:itemIconTint="@color/bnv_tab_item_foreground"
+            app:itemTextColor="@color/bnv_tab_item_foreground"
             android:padding="@dimen/margin_8dp"
-            app:labelVisibilityMode="auto"
+            app:labelVisibilityMode="labeled"
             android:soundEffectsEnabled="true"
             android:background="@drawable/bottomnavigationtround">
 
