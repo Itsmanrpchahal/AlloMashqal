@@ -2,6 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.allomashqal">
 
+
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+    <uses-permission android:name="android.permission.CAMERA"></uses-permission>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+
     <supports-screens
         android:smallScreens="true"
         android:normalScreens="true"
@@ -16,20 +25,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Translucent">
-        <activity android:name=".homescreen.eventservicesscreen.EventServicesScreen" />
-        <activity android:name=".homescreen.HomeScreen" />
-        <activity android:name=".dashboard.Dashboard" />
-        <activity android:name=".MapScreen.MapScreen" />
-        <activity android:name=".SignIn.SignIn" />
-        <activity android:name=".SignUp.SignUp" />
-        <activity android:name=".signupsingin.SignUp_SignIn" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".homescreen.eventservicesscreen.EventServicesScreen" android:screenOrientation="portrait" />
+        <activity android:name=".homescreen.HomeScreen" android:screenOrientation="portrait"/>
+        <activity android:name=".dashboard.Dashboard" android:screenOrientation="portrait"/>
+        <activity android:name=".MapScreen.MapScreen" android:screenOrientation="portrait"/>
+        <activity android:name=".SignIn.SignIn" android:screenOrientation="portrait"/>
+        <activity android:name=".SignUp.SignUp" android:screenOrientation="portrait" />
+        <activity android:name=".signupsingin.SignUp_SignIn" android:screenOrientation="portrait" />
+        <activity android:name=".MainActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
 
 
     </application>
