@@ -1,7 +1,5 @@
-plugins {
-    id 'com.android.application'
-}
-//apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 30
@@ -85,4 +83,9 @@ dependencies {
     //ToDo: RoundImageView
     implementation 'com.makeramen:roundedimageview:2.3.0'
 
+    //ToDo: Firebase
+    implementation platform('com.google.firebase:firebase-bom:26.3.0')
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-messaging:20.0.0'
+    implementation 'com.google.firebase:firebase-core:17.2.0'
 }

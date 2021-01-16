@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "193431642290",
+    "project_id": "aloomashqal",
+    "storage_bucket": "aloomashqal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:193431642290:android:0c617e734754cc8ee469ab",
+        "android_client_info": {
+          "package_name": "com.allomashqal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "193431642290-j6bia00afhpekqd3md8pvjq87b0alnrb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.allomashqal",
+            "certificate_hash": "f0c45ab08921ab910c45848534546770b55e5658"
+          }
+        },
+        {
+          "client_id": "193431642290-rrfvskt7u93qirprflkb478g47a9upci.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGgGEeoFXeFQK68DMmAmNKQy0d87WKj7Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "193431642290-rrfvskt7u93qirprflkb478g47a9upci.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

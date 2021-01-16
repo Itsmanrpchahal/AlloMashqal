@@ -26,6 +26,7 @@ import com.allomashqal.helper.LocaleHelper;
 import com.allomashqal.sharedpref.BaseActivity;
 import com.allomashqal.signupsingin.SignUp_SignIn;
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.FirebaseApp;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
@@ -140,13 +141,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private void listeners() {
         arabic_bt.setOnClickListener(this);
         english_bt.setOnClickListener(this);
-
-//        if (getStringVal(Constants.LOCALE).equals("ar"))
-//        {
-//            Toast.makeText(this,"Arabic",Toast.LENGTH_LONG).show();
-//        }else {
-//            Toast.makeText(this,"English",Toast.LENGTH_LONG).show();
-//        }
     }
 
 
@@ -163,6 +157,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             startActivity(new Intent(this, SignUp_SignIn.class).putExtra(Constants.LOCALE, "ar"));
             setStringVal(Constants.LOCALE, "ar");
 
+
         } else if (v == english_bt) {
             Context context = LocaleHelper.setLocale(this, "en");
             Resources resources = context.getResources();
@@ -170,6 +165,4 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             setStringVal(Constants.LOCALE, "en");
         }
     }
-
-
 }

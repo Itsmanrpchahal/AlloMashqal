@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class WebAPI {
 
-    public static String BASE_URL = "https://arcane-harbor-96521.herokuapp.com/";
+    public static String BASE_URL = "https://professionaler.com/salon/api/";
     public static WebAPI mInstance;
     Retrofit retrofit;
     public static ApiInterface apiInterface;
