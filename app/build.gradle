@@ -88,4 +88,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-messaging:20.0.0'
     implementation 'com.google.firebase:firebase-core:17.2.0'
+
+    //ToDO: AVILoading
+    implementation 'com.wang.avi:library:2.1.3'
 }

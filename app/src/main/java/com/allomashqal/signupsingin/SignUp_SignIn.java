@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.allomashqal.MapScreen.MapScreen;
 import com.allomashqal.R;
 import com.allomashqal.SignIn.SignIn;
 import com.allomashqal.SignUp.SignUp;
@@ -38,6 +39,11 @@ public class SignUp_SignIn extends BaseActivity implements View.OnClickListener 
         setContentView(R.layout.activity_sign_up__sign_in);
         ButterKnife.bind(this);
 
+        if (!getStringVal(Constants.USERID).equals(""))
+        {
+            Intent intent = new Intent(this, MapScreen.class);
+            startActivity(intent);
+        }
 
         UpdateViews(locale);
         listeners();

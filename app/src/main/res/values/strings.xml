@@ -55,4 +55,6 @@
     <string name="reservationsent">The reservation has been sent</string>
     <string name="offerprice">Offer price</string>
     <string name="dateformat">DD/MM/YYYY</string>
+    <string name="nointernet">No Internet</string>
+    <string name="ok">OK</string>
 </resources>

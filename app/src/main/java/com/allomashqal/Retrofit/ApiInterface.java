@@ -1,5 +1,6 @@
 package com.allomashqal.Retrofit;
 
+import com.allomashqal.SignIn.response.SignInResponse;
 import com.allomashqal.SignUp.response.SignUpResponse;
 
 import retrofit2.Call;
@@ -18,5 +19,14 @@ public interface ApiInterface {
             @Field("device_token") String device_token,
             @Field("device_type") String device_type,
             @Field("password") String password
+    );
+
+    @FormUrlEncoded
+    @POST("login")
+    Call<SignInResponse> signIn (
+            @Field("username") String username,
+            @Field("password") String password,
+            @Field("device_token") String device_token,
+            @Field("device_type") String device_type
     );
 }
