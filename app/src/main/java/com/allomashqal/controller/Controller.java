@@ -3,6 +3,7 @@ package com.allomashqal.controller;
 import com.allomashqal.Retrofit.WebAPI;
 import com.allomashqal.SignIn.response.SignInResponse;
 import com.allomashqal.SignUp.response.SignUpResponse;
+import com.allomashqal.homescreen.response.SalonListResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -13,52 +14,67 @@ public class Controller {
     public WebAPI webAPI;
     public SignUpAPI signUpAPI;
     public SignInAPI signInAPI;
+    public SalonListAPI salonListAPI;
 
     public Controller(SignUpAPI signUp) {
         signUpAPI = signUp;
         webAPI = new WebAPI();
     }
 
-    public Controller(SignInAPI signIn)
-    {
+    public Controller(SignInAPI signIn) {
         signInAPI = signIn;
         webAPI = new WebAPI();
     }
 
-    public void SetSignUp(String username,String password,String mobile,String device_token,String device_type,String emial)
-    {
-        webAPI.getApi().signUp(username,password,mobile,device_token,device_type,emial).enqueue(new Callback<SignUpResponse>() {
+    public Controller(SalonListAPI salonList) {
+        salonListAPI = salonList;
+        webAPI = new WebAPI();
+    }
+
+    public void SetSignUp(String username, String password, String mobile, String device_token, String device_type, String emial) {
+        webAPI.getApi().signUp(username, password, mobile, device_token, device_type, emial).enqueue(new Callback<SignUpResponse>() {
             @Override
             public void onResponse(Call<SignUpResponse> call, Response<SignUpResponse> response) {
-                if (response.isSuccessful())
-                {
-                        Response<SignUpResponse> signUpResponseResponse = response;
-                                signUpAPI.onSuccessSignUp(signUpResponseResponse);
+                if (response.isSuccessful()) {
+                    Response<SignUpResponse> signUpResponseResponse = response;
+                    signUpAPI.onSuccessSignUp(signUpResponseResponse);
                 }
             }
 
             @Override
             public void onFailure(Call<SignUpResponse> call, Throwable t) {
-                    signUpAPI.onError(t.getMessage());
+                signUpAPI.onError(t.getMessage());
             }
         });
     }
 
-    public void SetSignIn(String username,String password,String device_token,String device_type)
-    {
+    public void SetSignIn(String username, String password, String device_token, String device_type) {
         webAPI.getApi().signIn(username, password, device_token, device_type).enqueue(new Callback<SignInResponse>() {
             @Override
             public void onResponse(Call<SignInResponse> call, Response<SignInResponse> response) {
-                if (response.isSuccessful())
-                {
-                    Response<SignInResponse> signInResponseResponse = response;
-                    signInAPI.onSuccessSignIn(signInResponseResponse);
-                }
+                Response<SignInResponse> signInResponseResponse = response;
+                signInAPI.onSuccessSignIn(signInResponseResponse);
             }
 
             @Override
             public void onFailure(Call<SignInResponse> call, Throwable t) {
-                    signInAPI.onError(t.getMessage());
+                signInAPI.onError(t.getMessage());
+            }
+        });
+    }
+
+    public void SalonList(String type, String latitude, String longitude, String page)
+    {
+        webAPI.getApi().salonList(type, latitude, longitude, page).enqueue(new Callback<SalonListResponse>() {
+            @Override
+            public void onResponse(Call<SalonListResponse> call, Response<SalonListResponse> response) {
+                Response<SalonListResponse> salonListResponseResponse = response;
+                salonListAPI.onSuccessSalonList(salonListResponseResponse);
+            }
+
+            @Override
+            public void onFailure(Call<SalonListResponse> call, Throwable t) {
+                    salonListAPI.onError(t.getMessage());
             }
         });
     }
@@ -70,6 +86,11 @@ public class Controller {
 
     public interface SignInAPI {
         void onSuccessSignIn(Response<SignInResponse> success);
+        void onError(String error);
+    }
+
+    public interface SalonListAPI {
+        void onSuccessSalonList(Response<SalonListResponse> success);
         void onError(String error);
     }
 }

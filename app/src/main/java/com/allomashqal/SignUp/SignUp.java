@@ -59,6 +59,7 @@ public class SignUp extends BaseActivity implements View.OnClickListener, Contro
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         locale = getStringVal(Constants.LOCALE);
+        controller = new Controller(this);
         if (locale.equals("en")) {
             setContentView(R.layout.activity_sign_up);
         } else {
@@ -66,7 +67,8 @@ public class SignUp extends BaseActivity implements View.OnClickListener, Contro
         }
         FirebaseApp.initializeApp(this);
         ButterKnife.bind(this);
-        controller = new Controller(this);
+
+
         utility = new Utility();
         pd = new ProgressDialog(this);
         pd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));

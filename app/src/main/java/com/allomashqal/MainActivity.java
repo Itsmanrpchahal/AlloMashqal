@@ -20,6 +20,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Toast;
 
+import com.allomashqal.MapScreen.MapScreen;
 import com.allomashqal.Utils.Constants;
 import com.allomashqal.Utils.Utility;
 import com.allomashqal.helper.LocaleHelper;
@@ -81,7 +82,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                         // check if all permissions are granted
                         if (report.areAllPermissionsGranted()) {
                             perclear = true;
-                           // Toast.makeText(getApplicationContext(), "All permissions are granted!", Toast.LENGTH_SHORT).show();
+                            // Toast.makeText(getApplicationContext(), "All permissions are granted!", Toast.LENGTH_SHORT).show();
                         } else {
 
                         }
@@ -141,6 +142,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private void listeners() {
         arabic_bt.setOnClickListener(this);
         english_bt.setOnClickListener(this);
+
+        if (!getStringVal(Constants.USERID).equals(""))
+        {
+            startActivity(new Intent(this, MapScreen.class).putExtra(Constants.LOCALE, getStringVal(Constants.LOCALE)));
+            finish();
+        }
     }
 
 
@@ -152,17 +159,39 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if (v == arabic_bt) {
-            Context context = LocaleHelper.setLocale(this, "ar");
-            Resources resources = context.getResources();
-            startActivity(new Intent(this, SignUp_SignIn.class).putExtra(Constants.LOCALE, "ar"));
-            setStringVal(Constants.LOCALE, "ar");
+            if (!getStringVal(Constants.USERID).equals("")) {
+                Context context = LocaleHelper.setLocale(this, "ar");
+                Resources resources = context.getResources();
+                startActivity(new Intent(this, MapScreen.class).putExtra(Constants.LOCALE, "ar"));
+                finish();
+                setStringVal(Constants.LOCALE, "ar");
+            } else {
+
+                Context context = LocaleHelper.setLocale(this, "ar");
+                Resources resources = context.getResources();
+                startActivity(new Intent(this, SignUp_SignIn.class).putExtra(Constants.LOCALE, "ar"));
+                finish();
+                setStringVal(Constants.LOCALE, "ar");
+            }
 
 
         } else if (v == english_bt) {
-            Context context = LocaleHelper.setLocale(this, "en");
-            Resources resources = context.getResources();
-            startActivity(new Intent(this, SignUp_SignIn.class).putExtra(Constants.LOCALE, "en"));
-            setStringVal(Constants.LOCALE, "en");
+
+            if (!getStringVal(Constants.USERID).equals("")) {
+                Context context = LocaleHelper.setLocale(this, "en");
+                Resources resources = context.getResources();
+                startActivity(new Intent(this, MapScreen.class).putExtra(Constants.LOCALE, "en"));
+                finish();
+                setStringVal(Constants.LOCALE, "en");
+            } else {
+                Context context = LocaleHelper.setLocale(this, "en");
+                Resources resources = context.getResources();
+                startActivity(new Intent(this, SignUp_SignIn.class).putExtra(Constants.LOCALE, "en"));
+                finish();
+                setStringVal(Constants.LOCALE, "en");
+            }
+
+
         }
     }
 }

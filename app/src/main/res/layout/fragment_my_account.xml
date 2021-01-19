@@ -21,11 +21,30 @@
             android:layout_margin="3dp"
             android:nestedScrollingEnabled="true">
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:background="@color/theme">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/logout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/roundbt_fill"
+                    app:backgroundTint="@color/gold"
+                    android:visibility="gone"
+                    android:text="Logout"
+                    android:layout_margin="@dimen/margin_8dp"
+                    android:textSize="@dimen/textsize_10sp"
+                    android:textColor="@color/black"
+                    android:textAllCaps="false"
+                    android:layout_marginTop="@dimen/margin_8dp">
+
+                </com.google.android.material.button.MaterialButton>
+
 
                 <com.makeramen.roundedimageview.RoundedImageView
                     android:id="@+id/profile_picture"

@@ -34,7 +34,7 @@ public class BaseFragment extends Fragment {
         return sharedPreferences.getString(key,"");
     }
 
-    void clearStringVal(String key)
+    public void clearStringVal(String key)
     {
         editor.clear();
         editor.apply();

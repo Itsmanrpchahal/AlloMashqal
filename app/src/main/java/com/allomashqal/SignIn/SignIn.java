@@ -113,6 +113,7 @@ public class SignIn extends BaseActivity implements View.OnClickListener, Contro
                         Log.e("token", token);
                         if (utility.isConnectingToInternet(SignIn.this)) {
                             pd.show();
+                            pd.setContentView(R.layout.loading);
                             controller.SetSignIn(username_et.getText().toString(),
                                     password_et.getText().toString(),
                                     token,
@@ -127,7 +128,8 @@ public class SignIn extends BaseActivity implements View.OnClickListener, Contro
     }
 
     @Override
-    public void onSuccessSignIn(Response<SignInResponse> success) {
+    public void onSuccessSignIn(Response<SignInResponse> success)
+    {
         pd.dismiss();
         if (success.isSuccessful())
         {

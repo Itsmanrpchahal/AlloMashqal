@@ -30,6 +30,7 @@ public class SignUp_SignIn extends BaseActivity implements View.OnClickListener 
     @BindView(R.id.signinasvisitor_bt)
     MaterialButton signinasvisitor_bt;
     String locale;
+    Resources resources;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +58,7 @@ public class SignUp_SignIn extends BaseActivity implements View.OnClickListener 
 
     private void UpdateViews(String locale) {
         Context context = LocaleHelper.setLocale(this, locale);
-
+         resources = context.getResources();
     }
 
     private void listeners() {
@@ -70,7 +71,7 @@ public class SignUp_SignIn extends BaseActivity implements View.OnClickListener 
     @Override
     public void onClick(View v) {
 
-        Resources resources = context.getResources();
+
 
         signup_bt.setText(resources.getText(R.string.signup));
         signin_bt.setText(resources.getText(R.string.signin));

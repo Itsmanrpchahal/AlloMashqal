@@ -227,6 +227,8 @@ public class MapScreen extends BaseActivity implements View.OnClickListener, OnM
     @Override
     public void onClick(View v) {
         if (v == next_bt) {
+            setStringVal(Constants.LAT, String.valueOf(lat));
+            setStringVal(Constants.LNG, String.valueOf(lng));
             startActivity(new Intent(this, Dashboard.class));
         }
 
