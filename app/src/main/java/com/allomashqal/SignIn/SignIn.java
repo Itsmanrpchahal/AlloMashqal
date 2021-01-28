@@ -1,7 +1,6 @@
 package com.allomashqal.SignIn;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +9,9 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -28,8 +29,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
-
-import org.w3c.dom.Text;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -51,6 +50,7 @@ public class SignIn extends BaseActivity implements View.OnClickListener, Contro
     Utility utility;
     String locale;
     Controller controller;
+    Dialog changepassword,forgotpasswordDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +92,7 @@ public class SignIn extends BaseActivity implements View.OnClickListener, Contro
 
     private void listeners() {
         signin_bt.setOnClickListener(this);
+        forgotpassword.setOnClickListener(this::onClick);
     }
 
 
@@ -125,6 +126,63 @@ public class SignIn extends BaseActivity implements View.OnClickListener, Contro
             }
 //            startActivity(new Intent(this, MapScreen.class));
         }
+
+        if (v == forgotpassword)
+        {
+           // changepassword(locale);
+            forgotPassword(locale);
+        }
+    }
+
+    private void changepassword(String locale) {
+        changepassword = new Dialog(this);
+        changepassword.setContentView(R.layout.changepassword);
+        Window window = changepassword.getWindow();
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.WRAP_CONTENT);
+        changepassword.setCancelable(true);
+        changepassword.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        changepassword.show();
+
+        EditText password_et;
+        EditText confirm_password_et;
+        MaterialButton resetbutton;
+
+        password_et = changepassword.findViewById(R.id.password_et);
+        confirm_password_et = changepassword.findViewById(R.id.confirm_password_et);
+        resetbutton = forgotpassword.findViewById(R.id.resetbutton);
+
+        if (!locale.equals("en"))
+        {
+            password_et.setGravity(Gravity.RIGHT);
+            confirm_password_et.setGravity(Gravity.RIGHT);
+        }
+
+
+
+    }
+
+    private void forgotPassword(String locale)
+    {
+        forgotpasswordDialog = new Dialog(this);
+        forgotpasswordDialog.setContentView(R.layout.forgotpassword);
+        Window window = forgotpasswordDialog.getWindow();
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.WRAP_CONTENT);
+        forgotpasswordDialog.setCancelable(true);
+        forgotpasswordDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        forgotpasswordDialog.show();
+
+        EditText forgot_username;
+        MaterialButton resetpass_bt;
+
+
+        forgot_username = forgotpasswordDialog.findViewById(R.id.forgot_username);
+        resetpass_bt = forgotpasswordDialog.findViewById(R.id.resetpass_bt);
+
+        if (!locale.equals("en"))
+        {
+            forgot_username.setGravity(Gravity.RIGHT);
+        }
+
     }
 
     @Override

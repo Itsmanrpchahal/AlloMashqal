@@ -64,7 +64,7 @@ public class HomePageAdapter  extends RecyclerView.Adapter<HomePageAdapter.ViewH
 //            holder.eventname.setText(R.string.eventname);
 //        }
 
-        Glide.with(context).load("https://professionaler.com/salon/public/uploads"+salonListResponses.get(position).getImage()).placeholder(R.drawable.main1);
+        Glide.with(context).load("https://professionaler.com/salon/public/"+salonListResponses.get(position).getImage()).placeholder(R.drawable.main1);
         holder.eventname.setText(resources.getText(R.string.eventname)+" "+salonListResponses.get(position).getName().toString());
         holder.servicename.setText(resources.getText(R.string.servicename)+" "+salonListResponses.get(position).getServiceType().toString());
         if (salonListResponses.get(position).getAddress()!=null || salonListResponses.get(position).getAddress().equals(null) || salonListResponses.get(position).getAddress().equals("null"))

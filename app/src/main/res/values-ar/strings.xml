@@ -52,4 +52,7 @@
     <string name="offerprice">سعر العرض</string>
     <string name="dateformat">DD / MM / YYYY</string>
     <string name="cancelbooking">إلغاء الحجز</string>
+    <string name="reset">إعادة تعيين</string>
+    <string name="oldpassword">كلمة المرور القديمة</string>
+    <string name="confirmpassword">تأكيد كلمة المرور</string>
 </resources>

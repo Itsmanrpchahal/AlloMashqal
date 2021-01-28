@@ -103,5 +103,8 @@ dependencies {
     //adding paging
     implementation "android.arch.paging:runtime:$paging_version"
 
+    //ToDo: ImagerCropper
+    implementation 'com.github.dhaval2404:imagepicker:1.7.1'
+
 
 }
