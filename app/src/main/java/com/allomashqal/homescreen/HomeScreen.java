@@ -2,6 +2,7 @@ package com.allomashqal.homescreen;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,6 +19,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -28,6 +30,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.allomashqal.MainActivity;
 import com.allomashqal.R;
 import com.allomashqal.Utils.Constants;
 import com.allomashqal.helper.LocaleHelper;
@@ -65,10 +68,11 @@ public class HomeScreen extends BaseActivity {
     FragmentManager manager;
     FragmentTransaction fragmentTransaction;
     String type;
-    Dialog offerDialog,offerDetails,datetimeDialog,confirmation_dialog;
+    Dialog offerDialog, offerDetails, datetimeDialog, confirmation_dialog;
     OffersAdapter offersAdapter;
     TimeAdapter timeAdapter;
     String locale;
+    Toolbar toolbar;
 
     DatePickerDialog.OnDateSetListener dateSetListener;
     Calendar calendar;
@@ -82,14 +86,16 @@ public class HomeScreen extends BaseActivity {
         type = getStringVal(Constants.TYPE);
         manager = getSupportFragmentManager();
         calendar = Calendar.getInstance();
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
 
         fragmentTransaction = manager.beginTransaction();
-        fragmentTransaction.replace(R.id.container,new HomePageFrag());
+        fragmentTransaction.replace(R.id.container, new HomePageFrag());
         fragmentTransaction.commit();
-        if (type.equals("salons"))
-        {
+        if (type.equals("salons")) {
             typetv.setText(R.string.salons);
-        }else  {
+        } else {
             typetv.setText(R.string.eventsservice);
         }
 
@@ -102,6 +108,28 @@ public class HomeScreen extends BaseActivity {
         super.attachBaseContext(LocaleHelper.onAttach(base));
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.logout:
+                clearStringVal(Constants.USERID);
+                Intent intent = new Intent(this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     private void UpdateViews(String locale) {
         Context context = LocaleHelper.setLocale(this, locale);
@@ -121,32 +149,31 @@ public class HomeScreen extends BaseActivity {
         bottomnavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId())
-                {
+                switch (item.getItemId()) {
                     case R.id.home:
                         fragmentTransaction = manager.beginTransaction();
-                        fragmentTransaction.replace(R.id.container,new  HomePageFrag());
+                        fragmentTransaction.replace(R.id.container, new HomePageFrag());
                         fragmentTransaction.commit();
 
                         return true;
 
                     case R.id.booking:
                         fragmentTransaction = manager.beginTransaction();
-                        fragmentTransaction.replace(R.id.container,new MyBookingFrag());
+                        fragmentTransaction.replace(R.id.container, new MyBookingFrag());
                         fragmentTransaction.commit();
 
                         return true;
 
                     case R.id.Notifications:
                         fragmentTransaction = manager.beginTransaction();
-                        fragmentTransaction.replace(R.id.container,new NotificationsFrag());
+                        fragmentTransaction.replace(R.id.container, new NotificationsFrag());
                         fragmentTransaction.commit();
 
                         return true;
 
                     case R.id.myaccount:
                         fragmentTransaction = manager.beginTransaction();
-                        fragmentTransaction.replace(R.id.container,new MyAccountFrag());
+                        fragmentTransaction.replace(R.id.container, new MyAccountFrag());
                         fragmentTransaction.commit();
 
                         return true;
@@ -202,9 +229,8 @@ public class HomeScreen extends BaseActivity {
                 WindowManager.LayoutParams.WRAP_CONTENT
         );
 
-        MaterialButton booking,cancel_bt;
+        MaterialButton booking, cancel_bt;
         booking = offerDetails.findViewById(R.id.booking);
-
 
 
         booking.setOnClickListener(new View.OnClickListener() {
@@ -222,7 +248,7 @@ public class HomeScreen extends BaseActivity {
                         WindowManager.LayoutParams.WRAP_CONTENT
                 );
 
-                MaterialButton cancel_bt,confirm_button;
+                MaterialButton cancel_bt, confirm_button;
                 RecyclerView recyler_view;
                 EditText select_date;
 
@@ -230,8 +256,7 @@ public class HomeScreen extends BaseActivity {
                 confirm_button = datetimeDialog.findViewById(R.id.confirm_button);
                 select_date = datetimeDialog.findViewById(R.id.select_date);
 
-                if (locale.equals("ar"))
-                {
+                if (locale.equals("ar")) {
                     select_date.setGravity(Gravity.RIGHT);
                 }
 

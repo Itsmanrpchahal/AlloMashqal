@@ -230,6 +230,7 @@ public class MapScreen extends BaseActivity implements View.OnClickListener, OnM
             setStringVal(Constants.LAT, String.valueOf(lat));
             setStringVal(Constants.LNG, String.valueOf(lng));
             startActivity(new Intent(this, Dashboard.class));
+            finish();
         }
 
     }

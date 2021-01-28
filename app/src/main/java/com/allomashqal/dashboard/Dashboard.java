@@ -38,9 +38,11 @@ public class Dashboard extends BaseActivity implements View.OnClickListener {
         {
             startActivity(new Intent(this, HomeScreen.class));
             setStringVal(Constants.TYPE,"salons");
+            finish();
         }else {
             startActivity(new Intent(this, HomeScreen.class));
             setStringVal(Constants.TYPE,"eventservices");
+            finish();
         }
     }
 }
