@@ -2,6 +2,7 @@ package com.allomashqal.Retrofit;
 
 import com.allomashqal.SignIn.response.SignInResponse;
 import com.allomashqal.SignUp.response.SignUpResponse;
+import com.allomashqal.homescreen.fragments.response.GetProfileResponse;
 import com.allomashqal.homescreen.response.SalonListResponse;
 
 import retrofit2.Call;
@@ -40,5 +41,10 @@ public interface ApiInterface {
             @Query("latitude") String latitude,
             @Query("longitude") String longitude,
             @Query("page") String page
+    );
+
+    @GET("my-profile")
+    Call<GetProfileResponse> getProfile (
+      @Query("id") String id
     );
 }

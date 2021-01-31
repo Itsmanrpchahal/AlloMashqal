@@ -106,5 +106,9 @@ dependencies {
     //ToDo: ImagerCropper
     implementation 'com.github.dhaval2404:imagepicker:1.7.1'
 
+    //ToDo:Pick
+    //ToDo: ImagerCropper
+    implementation 'com.github.dhaval2404:imagepicker:1.7.1'
+
 
 }

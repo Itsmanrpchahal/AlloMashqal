@@ -84,7 +84,7 @@ public class Utility {
     }
 
     //convert image to multipart
-    public static MultipartBody.Part sendImageFileToserver(File filesDir, Bitmap bitMap, String image) throws IOException {
+    public static MultipartBody.Part sendImageFileToserver(File filesDir,Bitmap bitMap,String image) throws IOException {
 
 
         File file = new File(filesDir, image + ".png");

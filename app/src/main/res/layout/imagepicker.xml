@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    android:background="@drawable/whiteborder">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerVertical="true"
+        android:weightSum="2"
+        android:layout_marginTop="@dimen/margin_32dp"
+        android:layout_marginBottom="@dimen/margin_32dp"
+        android:layout_marginLeft="@dimen/textsize_16sp"
+        android:layout_marginRight="@dimen/textsize_16sp"
+        >
+
+
+        <LinearLayout
+            android:id="@+id/linear_camera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_baseline_camera_24">
+
+            </ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Camera"
+                android:textSize="@dimen/textsize_16sp"
+                android:textColor="@color/white"
+                android:layout_gravity="center">
+
+            </TextView>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linear_gallery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_baseline_photo_album_24">
+            </ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gallery"
+                android:textSize="@dimen/textsize_16sp"
+                android:textColor="@color/white"
+                android:layout_gravity="center">
+
+            </TextView>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

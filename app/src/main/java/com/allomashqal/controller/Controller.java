@@ -3,6 +3,7 @@ package com.allomashqal.controller;
 import com.allomashqal.Retrofit.WebAPI;
 import com.allomashqal.SignIn.response.SignInResponse;
 import com.allomashqal.SignUp.response.SignUpResponse;
+import com.allomashqal.homescreen.fragments.response.GetProfileResponse;
 import com.allomashqal.homescreen.response.SalonListResponse;
 
 import retrofit2.Call;
@@ -15,6 +16,7 @@ public class Controller {
     public SignUpAPI signUpAPI;
     public SignInAPI signInAPI;
     public SalonListAPI salonListAPI;
+    public GetProfileAPI getProfileAPI;
 
     public Controller(SignUpAPI signUp) {
         signUpAPI = signUp;
@@ -28,6 +30,12 @@ public class Controller {
 
     public Controller(SalonListAPI salonList) {
         salonListAPI = salonList;
+        webAPI = new WebAPI();
+    }
+
+    public Controller (GetProfileAPI getProfile)
+    {
+        getProfileAPI = getProfile;
         webAPI = new WebAPI();
     }
 
@@ -79,6 +87,22 @@ public class Controller {
         });
     }
 
+    public void GetProfile(String id)
+    {
+        webAPI.getApi().getProfile(id).enqueue(new Callback<GetProfileResponse>() {
+            @Override
+            public void onResponse(Call<GetProfileResponse> call, Response<GetProfileResponse> response) {
+                Response<GetProfileResponse> getProfileResponseResponse = response;
+                getProfileAPI.onSuccessProfile(getProfileResponseResponse);
+            }
+
+            @Override
+            public void onFailure(Call<GetProfileResponse> call, Throwable t) {
+                getProfileAPI.onError(t.getMessage());
+            }
+        });
+    }
+
   public interface SignUpAPI {
         void onSuccessSignUp(Response<SignUpResponse> success);
         void onError(String error);
@@ -91,6 +115,11 @@ public class Controller {
 
     public interface SalonListAPI {
         void onSuccessSalonList(Response<SalonListResponse> success);
+        void onError(String error);
+    }
+
+    public interface GetProfileAPI {
+        void onSuccessProfile(Response<GetProfileResponse> success);
         void onError(String error);
     }
 }
