@@ -12,16 +12,23 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.allomashqal.R;
+import com.allomashqal.homescreen.fragments.response.NotificationsResponse;
+
+import org.checkerframework.checker.units.qual.A;
+
+import java.util.ArrayList;
 
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.ViewHolder> {
     Context context;
     Resources resources;
     String  locale;
+    ArrayList<NotificationsResponse.Datum> list ;
 
-    public NotificationAdapter(Context context, String locale, Resources resources) {
+    public NotificationAdapter(Context context, String locale, Resources resources, ArrayList<NotificationsResponse.Datum> lists) {
         this.context = context;
         this.locale = locale;
         this.resources = resources;
+        this.list = lists;
     }
 
     @NonNull
@@ -44,16 +51,16 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
             holder.bookingdate.setGravity(Gravity.RIGHT);
             holder.totalbill.setGravity(Gravity.RIGHT);
         }
-        holder.notificationtitle.setText(resources.getText(R.string.reservationsent));
-        holder.bookingstatus.setText(resources.getText(R.string.bookingstatus));
-        holder.offerdetail.setText(resources.getText(R.string.orderdetails));
-        holder.bookingdate.setText(resources.getText(R.string.bookingdate));
-        holder.totalbill.setText(resources.getText(R.string.totalbill));
+        holder.notificationtitle.setText(list.get(position).getTitle());
+        holder.bookingstatus.setText(list.get(position).getStatus());
+        holder.offerdetail.setText(list.get(position).getBooking());
+        holder.bookingdate.setText(list.get(position).getBooking());
+        holder.totalbill.setText(list.get(position).getTotalBill());
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+        return list.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

@@ -4,8 +4,11 @@ import com.allomashqal.Retrofit.WebAPI;
 import com.allomashqal.SignIn.response.SignInResponse;
 import com.allomashqal.SignUp.response.SignUpResponse;
 import com.allomashqal.homescreen.fragments.response.GetProfileResponse;
+import com.allomashqal.homescreen.fragments.response.NotificationsResponse;
+import com.allomashqal.homescreen.fragments.response.UpdateProfileResponse;
 import com.allomashqal.homescreen.response.SalonListResponse;
 
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -17,6 +20,8 @@ public class Controller {
     public SignInAPI signInAPI;
     public SalonListAPI salonListAPI;
     public GetProfileAPI getProfileAPI;
+    public UpdateProfileAPI updateProfileAPI;
+    public NotificationsAPI notificationsAPI;
 
     public Controller(SignUpAPI signUp) {
         signUpAPI = signUp;
@@ -33,9 +38,16 @@ public class Controller {
         webAPI = new WebAPI();
     }
 
-    public Controller (GetProfileAPI getProfile)
+    public Controller (GetProfileAPI getProfile,UpdateProfileAPI updateProfile)
     {
         getProfileAPI = getProfile;
+        updateProfileAPI = updateProfile;
+        webAPI = new WebAPI();
+    }
+
+    public Controller(NotificationsAPI notifications)
+    {
+        notificationsAPI = notifications;
         webAPI = new WebAPI();
     }
 
@@ -103,6 +115,38 @@ public class Controller {
         });
     }
 
+    public void updateProfile(String id, String password, String email, String phone, MultipartBody.Part image)
+    {
+        webAPI.getApi().updateProfile(id, password, email, phone, image).enqueue(new Callback<UpdateProfileResponse>() {
+            @Override
+            public void onResponse(Call<UpdateProfileResponse> call, Response<UpdateProfileResponse> response) {
+                Response<UpdateProfileResponse> updateProfileResponseResponse = response;
+                updateProfileAPI.onSuccessUpdateProfile(updateProfileResponseResponse);
+            }
+
+            @Override
+            public void onFailure(Call<UpdateProfileResponse> call, Throwable t) {
+                updateProfileAPI.onError(t.getMessage());
+            }
+        });
+    }
+
+    public void Notifications(String id)
+    {
+        webAPI.getApi().notifications(id).enqueue(new Callback<NotificationsResponse>() {
+            @Override
+            public void onResponse(Call<NotificationsResponse> call, Response<NotificationsResponse> response) {
+                Response<NotificationsResponse> notificationsResponseResponse = response;
+                notificationsAPI.onSuccessNotifications(notificationsResponseResponse);
+            }
+
+            @Override
+            public void onFailure(Call<NotificationsResponse> call, Throwable t) {
+                notificationsAPI.onError(t.getMessage());
+            }
+        });
+    }
+
   public interface SignUpAPI {
         void onSuccessSignUp(Response<SignUpResponse> success);
         void onError(String error);
@@ -120,6 +164,16 @@ public class Controller {
 
     public interface GetProfileAPI {
         void onSuccessProfile(Response<GetProfileResponse> success);
+        void onError(String error);
+    }
+
+    public interface UpdateProfileAPI {
+        void onSuccessUpdateProfile(Response<UpdateProfileResponse> success);
+        void onError(String error);
+    }
+
+    public interface NotificationsAPI {
+        void onSuccessNotifications(Response<NotificationsResponse> success);
         void onError(String error);
     }
 }

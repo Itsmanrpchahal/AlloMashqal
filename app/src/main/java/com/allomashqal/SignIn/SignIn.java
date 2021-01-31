@@ -200,7 +200,7 @@ public class SignIn extends BaseActivity implements View.OnClickListener, Contro
                 finish();
             }
         } else {
-            Toast.makeText(this,""+success.message(),Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Invalid username or password",Toast.LENGTH_SHORT).show();
         }
     }
 
