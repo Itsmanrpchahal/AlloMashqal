@@ -95,7 +95,6 @@
             android:id="@+id/map"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:background="@drawable/map"
             android:layout_margin="2dp">
 
         </com.allomashqal.appmapview.AppMapView>

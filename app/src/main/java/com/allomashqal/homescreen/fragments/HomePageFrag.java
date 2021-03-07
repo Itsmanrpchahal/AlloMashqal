@@ -127,12 +127,10 @@ public class HomePageFrag extends BaseFragment implements Controller.SalonListAP
         } else {
             Toast.makeText(getContext(),""+success.message(),Toast.LENGTH_LONG).show();
         }
-
-
     }
 
     private void getData(int pagee, int limit) {
-progress_bar.setVisibility(View.VISIBLE);
+        progress_bar.setVisibility(View.VISIBLE);
         controller.SalonList("salon", getStringVal(Constants.LAT), getStringVal(Constants.LNG), String.valueOf(pagee));
     }
 

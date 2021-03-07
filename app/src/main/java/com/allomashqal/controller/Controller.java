@@ -6,6 +6,7 @@ import com.allomashqal.SignUp.response.SignUpResponse;
 import com.allomashqal.homescreen.fragments.response.GetProfileResponse;
 import com.allomashqal.homescreen.fragments.response.NotificationsResponse;
 import com.allomashqal.homescreen.fragments.response.UpdateProfileResponse;
+import com.allomashqal.homescreen.response.EventServiceDataResponse;
 import com.allomashqal.homescreen.response.SalonListResponse;
 
 import okhttp3.MultipartBody;
@@ -22,6 +23,7 @@ public class Controller {
     public GetProfileAPI getProfileAPI;
     public UpdateProfileAPI updateProfileAPI;
     public NotificationsAPI notificationsAPI;
+    public EventServiceAPI eventServiceAPI;
 
     public Controller(SignUpAPI signUp) {
         signUpAPI = signUp;
@@ -48,6 +50,12 @@ public class Controller {
     public Controller(NotificationsAPI notifications)
     {
         notificationsAPI = notifications;
+        webAPI = new WebAPI();
+    }
+
+    public Controller(EventServiceAPI eventService)
+    {
+        eventServiceAPI = eventService;
         webAPI = new WebAPI();
     }
 
@@ -147,6 +155,22 @@ public class Controller {
         });
     }
 
+    public void EventServices(String id,String userid)
+    {
+        webAPI.getApi().eventServiceDataResponse(id,userid).enqueue(new Callback<EventServiceDataResponse>() {
+            @Override
+            public void onResponse(Call<EventServiceDataResponse> call, Response<EventServiceDataResponse> response) {
+                Response<EventServiceDataResponse> eventServiceDataResponseResponse = response;
+                eventServiceAPI.onSuccessEventService(eventServiceDataResponseResponse);
+            }
+
+            @Override
+            public void onFailure(Call<EventServiceDataResponse> call, Throwable t) {
+                eventServiceAPI.onError(t.getMessage());
+            }
+        });
+    }
+
   public interface SignUpAPI {
         void onSuccessSignUp(Response<SignUpResponse> success);
         void onError(String error);
@@ -174,6 +198,11 @@ public class Controller {
 
     public interface NotificationsAPI {
         void onSuccessNotifications(Response<NotificationsResponse> success);
+        void onError(String error);
+    }
+
+    public interface EventServiceAPI {
+        void onSuccessEventService(Response<EventServiceDataResponse> success);
         void onError(String error);
     }
 }

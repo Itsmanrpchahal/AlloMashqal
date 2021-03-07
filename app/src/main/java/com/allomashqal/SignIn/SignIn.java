@@ -119,9 +119,11 @@ public class SignIn extends BaseActivity implements View.OnClickListener, Contro
                                     password_et.getText().toString(),
                                     token,
                                     "android");
+                        } else  {
+                            Toast.makeText(SignIn.this,"No Internet",Toast.LENGTH_SHORT).show();
                         }
-
                     }
+
                 });
             }
 //            startActivity(new Intent(this, MapScreen.class));

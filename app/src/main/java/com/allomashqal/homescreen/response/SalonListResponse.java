@@ -77,12 +77,24 @@ this.message = message;
 
         public class List {
 
+            @SerializedName("id")
+            @Expose
+            private String id;
             @SerializedName("name")
             @Expose
             private String name;
             @SerializedName("service_type")
             @Expose
             private String serviceType;
+
+            public String getId() {
+                return id;
+            }
+
+            public void setId(String id) {
+                this.id = id;
+            }
+
             @SerializedName("address")
             @Expose
             private Object address;

@@ -5,6 +5,7 @@ import com.allomashqal.SignUp.response.SignUpResponse;
 import com.allomashqal.homescreen.fragments.response.GetProfileResponse;
 import com.allomashqal.homescreen.fragments.response.NotificationsResponse;
 import com.allomashqal.homescreen.fragments.response.UpdateProfileResponse;
+import com.allomashqal.homescreen.response.EventServiceDataResponse;
 import com.allomashqal.homescreen.response.SalonListResponse;
 
 import okhttp3.MultipartBody;
@@ -67,5 +68,11 @@ public interface ApiInterface {
     @GET("notification")
     Call<NotificationsResponse> notifications(
             @Query("id") String id
+    );
+
+    @GET("services")
+    Call<EventServiceDataResponse> eventServiceDataResponse(
+            @Query("id") String id,
+            @Query("userid") String userid
     );
 }
