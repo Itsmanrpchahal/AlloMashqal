@@ -3,6 +3,8 @@ package com.allomashqal.controller;
 import com.allomashqal.Retrofit.WebAPI;
 import com.allomashqal.SignIn.response.SignInResponse;
 import com.allomashqal.SignUp.response.SignUpResponse;
+import com.allomashqal.homescreen.eventservicesscreen.BookServiceResponse;
+import com.allomashqal.homescreen.fragments.response.BookingResponse;
 import com.allomashqal.homescreen.fragments.response.GetProfileResponse;
 import com.allomashqal.homescreen.fragments.response.NotificationsResponse;
 import com.allomashqal.homescreen.fragments.response.UpdateProfileResponse;
@@ -24,6 +26,8 @@ public class Controller {
     public UpdateProfileAPI updateProfileAPI;
     public NotificationsAPI notificationsAPI;
     public EventServiceAPI eventServiceAPI;
+    public BookServiceAPI bookServiceAPI;
+    public BookingAPI bookingAPI;
 
     public Controller(SignUpAPI signUp) {
         signUpAPI = signUp;
@@ -53,9 +57,16 @@ public class Controller {
         webAPI = new WebAPI();
     }
 
-    public Controller(EventServiceAPI eventService)
+    public Controller(EventServiceAPI eventService,BookServiceAPI bookService)
     {
         eventServiceAPI = eventService;
+        bookServiceAPI = bookService;
+        webAPI = new WebAPI();
+    }
+
+    public Controller(BookingAPI booking)
+    {
+        bookingAPI = booking;
         webAPI = new WebAPI();
     }
 
@@ -171,6 +182,38 @@ public class Controller {
         });
     }
 
+    public void BookService(String userid,String providerid,String serviceid,String price,String datetime)
+    {
+        webAPI.getApi().bookservice(userid, providerid, serviceid, price, datetime).enqueue(new Callback<BookServiceResponse>() {
+            @Override
+            public void onResponse(Call<BookServiceResponse> call, Response<BookServiceResponse> response) {
+                Response<BookServiceResponse> bookServiceResponseResponse = response;
+                bookServiceAPI.onSuccessBookService(bookServiceResponseResponse);
+            }
+
+            @Override
+            public void onFailure(Call<BookServiceResponse> call, Throwable t) {
+                bookServiceAPI.onError(t.getMessage());
+            }
+        });
+    }
+
+    public void Booking(String userid)
+    {
+        webAPI.getApi().booking(userid).enqueue(new Callback<BookingResponse>() {
+            @Override
+            public void onResponse(Call<BookingResponse> call, Response<BookingResponse> response) {
+                Response<BookingResponse> bookingResponseResponse = response;
+                bookingAPI.onSuccessBookoing(bookingResponseResponse);
+            }
+
+            @Override
+            public void onFailure(Call<BookingResponse> call, Throwable t) {
+                bookingAPI.onError(t.getMessage());
+            }
+        });
+    }
+
   public interface SignUpAPI {
         void onSuccessSignUp(Response<SignUpResponse> success);
         void onError(String error);
@@ -203,6 +246,16 @@ public class Controller {
 
     public interface EventServiceAPI {
         void onSuccessEventService(Response<EventServiceDataResponse> success);
+        void onError(String error);
+    }
+
+    public interface BookServiceAPI {
+        void onSuccessBookService(Response<BookServiceResponse> success);
+        void onError(String error);
+    }
+
+    public interface BookingAPI {
+        void onSuccessBookoing(Response<BookingResponse> success);
         void onError(String error);
     }
 }

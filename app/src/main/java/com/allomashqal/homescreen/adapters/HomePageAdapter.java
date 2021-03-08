@@ -77,7 +77,7 @@ public class HomePageAdapter  extends RecyclerView.Adapter<HomePageAdapter.ViewH
         holder.bookingservice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.startActivity(new Intent(context, EventServicesScreen.class).putExtra("serviceID",salonListResponses.get(position).getId()));
+                context.startActivity(new Intent(context, EventServicesScreen.class).putExtra("providerID",salonListResponses.get(position).getId()));
             }
         });
     }

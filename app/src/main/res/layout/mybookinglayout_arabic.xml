@@ -89,6 +89,7 @@
         android:textColor="@color/black"
         android:text="@string/edit"
         android:textAllCaps="false"
+        android:visibility="gone"
         android:textSize="@dimen/textsize_10sp"
         app:backgroundTint="@color/gold"
         android:layout_toRightOf="@dimen/margin_8dp"

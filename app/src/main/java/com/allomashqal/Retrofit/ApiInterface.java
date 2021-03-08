@@ -2,6 +2,8 @@ package com.allomashqal.Retrofit;
 
 import com.allomashqal.SignIn.response.SignInResponse;
 import com.allomashqal.SignUp.response.SignUpResponse;
+import com.allomashqal.homescreen.eventservicesscreen.BookServiceResponse;
+import com.allomashqal.homescreen.fragments.response.BookingResponse;
 import com.allomashqal.homescreen.fragments.response.GetProfileResponse;
 import com.allomashqal.homescreen.fragments.response.NotificationsResponse;
 import com.allomashqal.homescreen.fragments.response.UpdateProfileResponse;
@@ -73,6 +75,21 @@ public interface ApiInterface {
     @GET("services")
     Call<EventServiceDataResponse> eventServiceDataResponse(
             @Query("id") String id,
+            @Query("userid") String userid
+    );
+
+    @FormUrlEncoded
+    @POST("make-order")
+    Call<BookServiceResponse> bookservice(
+            @Field("userid") String userid,
+            @Field("providerid") String providerid,
+            @Field("serviceid") String serviceid,
+            @Field("price") String price,
+            @Field("datetime") String datetime
+    );
+
+    @GET("my-appointments")
+    Call<BookingResponse> booking(
             @Query("userid") String userid
     );
 }

@@ -66,7 +66,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import retrofit2.Response;
 
-public class EventServicesScreen extends BaseActivity implements OnMapReadyCallback,Controller.EventServiceAPI {
+public class EventServicesScreen extends BaseActivity implements OnMapReadyCallback, Controller.EventServiceAPI ,Controller.BookServiceAPI{
 
     @BindView(R.id.recylerview)
     RecyclerView recyler_view;
@@ -95,7 +95,7 @@ public class EventServicesScreen extends BaseActivity implements OnMapReadyCallb
     EventServicesAdapter eventServicesAdapter;
     EventService_IF eventService_if;
     Dialog dialog, confirmation_dialog;
-    String type,serviceID;
+    String type, providerID,serviceID;
     Resources resources;
     Controller controller;
     ProgressDialog pd;
@@ -111,7 +111,7 @@ public class EventServicesScreen extends BaseActivity implements OnMapReadyCallb
         locale = getStringVal(Constants.LOCALE);
         utility = new Utility();
         intent = getIntent();
-        serviceID = intent.getStringExtra("serviceID").toString();
+        providerID = intent.getStringExtra("providerID").toString();
         pd = new ProgressDialog(this);
         pd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         pd.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
@@ -124,8 +124,8 @@ public class EventServicesScreen extends BaseActivity implements OnMapReadyCallb
 //        pd.isIndeterminate() = true;
         pd.setCancelable(false);
 
-        controller = new Controller(this);
-        controller.EventServices(serviceID,getStringVal(Constants.USERID));
+        controller = new Controller(this,this);
+        controller.EventServices(getStringVal(Constants.USERID), providerID);
         pd.show();
         pd.setContentView(R.layout.loading);
 
@@ -142,12 +142,12 @@ public class EventServicesScreen extends BaseActivity implements OnMapReadyCallb
 
     private void UpdateViews(String locale) {
         Context context = LocaleHelper.setLocale(this, locale);
-         resources = context.getResources();
+        resources = context.getResources();
 
         reviewtv.setText(resources.getText(R.string.review));
         if (getStringVal(Constants.TYPE).equals("salons")) {
             typetv.setText(resources.getText(R.string.salons));
-          //  salon_name.setText(resources.getText(R.string.salonsname));
+            //  salon_name.setText(resources.getText(R.string.salonsname));
         } else {
             typetv.setText(resources.getText(R.string.eventsservice));
             //salon_name.setText(resources.getText(R.string.eventname));
@@ -159,7 +159,7 @@ public class EventServicesScreen extends BaseActivity implements OnMapReadyCallb
         super.attachBaseContext(LocaleHelper.onAttach(base));
     }
 
-    private void OpenDetails(String id,String selectedDate,String selectedTime) {
+    private void OpenDetails(String id, String selectedDate, String selectedTime, Response<EventServiceDataResponse> success) {
         dialog = new Dialog(EventServicesScreen.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(true);
@@ -173,7 +173,7 @@ public class EventServicesScreen extends BaseActivity implements OnMapReadyCallb
 
 
         MaterialButton bookingconfirmation, cancel_bt;
-        TextView event_title,bookingdetailtv,servicetype,booking_date,total_bill,location;
+        TextView event_title, bookingdetailtv, servicetype, booking_date, total_bill, location;
         bookingconfirmation = dialog.findViewById(R.id.bookingconfirmation);
         bookingdetailtv = dialog.findViewById(R.id.bookingdetailtv);
         cancel_bt = dialog.findViewById(R.id.cancel_bt);
@@ -186,8 +186,7 @@ public class EventServicesScreen extends BaseActivity implements OnMapReadyCallb
         map.getMapAsync(this);
         MapsInitializer.initialize(this);
         statusCheck();
-        if (locale.equals("ar"))
-        {
+        if (locale.equals("ar")) {
             bookingdetailtv.setGravity(Gravity.RIGHT);
             servicetype.setGravity(Gravity.RIGHT);
             booking_date.setGravity(Gravity.RIGHT);
@@ -195,16 +194,19 @@ public class EventServicesScreen extends BaseActivity implements OnMapReadyCallb
             location.setGravity(Gravity.RIGHT);
         }
         bookingdetailtv.setText(resources.getText(R.string.bookingdetail));
-        servicetype.setText(resources.getText(R.string.servicetype));
-        booking_date.setText(selectedDate+" , "+selectedTime);
-        total_bill.setText(resources.getText(R.string.totalbill));
+        servicetype.setText(success.body().getData().getServiceList().get(Integer.parseInt(id)).getTitle());
+        booking_date.setText(selectedDate + " , " + selectedTime);
+        total_bill.setText(resources.getText(R.string.totalbill)+"KD "+success.body().getData().getServiceList().get(Integer.parseInt(id)).getPrice());
         location.setText(resources.getText(R.string.location));
         cancel_bt.setText(resources.getText(R.string.cancel));
         bookingconfirmation.setText(resources.getText(R.string.bookingconfirmation));
-        if (type.equals("salons"))
-        {
+
+        lat = Double.valueOf(success.body().getData().getProviderDetail().getLatitude());
+        lng = Double.valueOf(success.body().getData().getProviderDetail().getLongitude());
+
+        if (type.equals("salons")) {
             event_title.setText(R.string.salons);
-        }else  {
+        } else {
             event_title.setText(R.string.eventsservice);
         }
 
@@ -219,14 +221,15 @@ public class EventServicesScreen extends BaseActivity implements OnMapReadyCallb
         bookingconfirmation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                confirmation_dialog();
+                pd.show();
+                controller.BookService(getStringVal(Constants.USERID),providerID,success.body().getData().getServiceList().get(Integer.parseInt(id)).getId(),success.body().getData().getServiceList().get(Integer.parseInt(id)).getPrice(),selectedDate+" "+selectedTime);
+
             }
         });
 
-        if (selectedTime==null|| selectedDate==null)
-        {
-            Toast.makeText(this,"Select date or time",Toast.LENGTH_SHORT).show();
-        } else  {
+        if (selectedTime == null || selectedDate == null) {
+            Toast.makeText(this, "Select date or time", Toast.LENGTH_SHORT).show();
+        } else {
             dialog.show();
         }
 
@@ -252,6 +255,7 @@ public class EventServicesScreen extends BaseActivity implements OnMapReadyCallb
             @Override
             public void onClick(View v) {
                 confirmation_dialog.dismiss();
+                dialog.dismiss();
             }
         });
 
@@ -266,7 +270,6 @@ public class EventServicesScreen extends BaseActivity implements OnMapReadyCallb
             }
         });
     }
-
 
 
     @Override
@@ -291,21 +294,20 @@ public class EventServicesScreen extends BaseActivity implements OnMapReadyCallb
 
         // getCityName(lat, lng);
 
-        if (lat != null && lng != null) {
-            Gmap.setOnCameraIdleListener(new GoogleMap.OnCameraIdleListener() {
-                @Override
-                public void onCameraIdle() {
-                    LatLng midLatLng = Gmap.getCameraPosition().target;
-
-                    //latt = String.valueOf(midLatLng.latitude);
-                    //lnng = String.valueOf(midLatLng.longitude);
-
-                    Log.d("cameralatlong", "" + midLatLng.latitude + "    " + midLatLng.longitude);
-                    //getCityName(latt, lnng);
-                }
-            });
-
-        }
+//        if (lat != null && lng != null) {
+//            Gmap.setOnCameraIdleListener(new GoogleMap.OnCameraIdleListener() {
+//                @Override
+//                public void onCameraIdle() {
+//                    LatLng midLatLng = Gmap.getCameraPosition().target;
+//
+//                    //latt = String.valueOf(midLatLng.latitude);
+//                    //lnng = String.valueOf(midLatLng.longitude);
+//
+//                    Log.d("cameralatlong", "" + midLatLng.latitude + "    " + midLatLng.longitude);
+//                    //getCityName(latt, lnng);
+//                }
+//            });
+//        }
     }
 
     public void statusCheck() {
@@ -399,46 +401,57 @@ public class EventServicesScreen extends BaseActivity implements OnMapReadyCallb
     @Override
     public void onSuccessEventService(Response<EventServiceDataResponse> success) {
         pd.dismiss();
-        eventServiceDataResponses = new  ArrayList<EventServiceDataResponse.Data.ServiceList>();
-        if (success.isSuccessful())
-        {
-            if (success.body().getSuccess()==true)
-            {
+        eventServiceDataResponses = new ArrayList<EventServiceDataResponse.Data.ServiceList>();
+        if (success.isSuccessful()) {
+            if (success.body().getSuccess() == true) {
 
-                if (!success.body().getMessage().equals("No service."))
-                {
+                if (!success.body().getMessage().equals("No service.")) {
                     salon_name.setText(success.body().getData().getProviderDetail().getProviderName());
                     rating.setRating(success.body().getData().getProviderDetail().getRating());
-                    for (int i=0; i<=success.body().getData().getServiceList().size();i++)
-                    {
-                        eventServiceDataResponses.add((EventServiceDataResponse.Data.ServiceList) success.body().getData().getServiceList());
+                    for (int i = 0; i <= success.body().getData().getServiceList().size(); i++) {
+                        eventServiceDataResponses = (ArrayList<EventServiceDataResponse.Data.ServiceList>) success.body().getData().getServiceList();
                     }
                     recyler_view.setLayoutManager(new GridLayoutManager(this, 2));
-                    eventServicesAdapter = new EventServicesAdapter(this,locale,resources,eventServiceDataResponses);
+                    eventServicesAdapter = new EventServicesAdapter(this, locale, resources, eventServiceDataResponses);
 
                     recyler_view.setAdapter(eventServicesAdapter);
                     eventServicesAdapter.EventServicesAdapter(new EventService_IF() {
                         @Override
-                        public void evenServiceID(String id,String selectedDate,String selectedTime) {
-                            OpenDetails(id,selectedDate,selectedTime);
+                        public void evenServiceID(String id, String selectedDate, String selectedTime) {
+                            OpenDetails(id, selectedDate, selectedTime,success);
                         }
                     });
-                } else  {
-                    Toast.makeText(this,success.body().getMessage(),Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(this, success.body().getMessage(), Toast.LENGTH_LONG).show();
                 }
 
-            }else  {
-                Toast.makeText(this,""+success.message(),Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "" + success.message(), Toast.LENGTH_SHORT).show();
             }
-        }else
+        } else {
+            Toast.makeText(this, "" + success.message(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onSuccessBookService(Response<BookServiceResponse> success) {
+        pd.dismiss();
+        if (success.isSuccessful())
+        {
+            if (success.body().getSuccess()==true)
             {
-                Toast.makeText(this,""+success.message(),Toast.LENGTH_SHORT).show();
+                confirmation_dialog();
+            }else {
+                Toast.makeText(this, success.message(), Toast.LENGTH_LONG).show();
             }
+        } else  {
+            Toast.makeText(this, success.message(), Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override
     public void onError(String error) {
-pd.dismiss();
-Toast.makeText(this,""+error,Toast.LENGTH_SHORT);
+        pd.dismiss();
+        Toast.makeText(this, "" + error, Toast.LENGTH_SHORT);
     }
 }

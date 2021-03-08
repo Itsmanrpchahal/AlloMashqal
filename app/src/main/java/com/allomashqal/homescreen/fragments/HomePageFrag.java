@@ -83,11 +83,11 @@ public class HomePageFrag extends BaseFragment implements Controller.SalonListAP
         resources = context.getResources();
         // type = getStringVal(Constants.TYPE);
 
-        LinearLayoutManager manager = new LinearLayoutManager(getContext());
-        manager.setOrientation(LinearLayout.VERTICAL);
-        recyler_view.setLayoutManager(manager);
-        homePageAdapter = new HomePageAdapter(getContext(), locale, resources, lists);
-        recyler_view.setAdapter(homePageAdapter);
+            LinearLayoutManager manager = new LinearLayoutManager(getContext());
+            manager.setOrientation(LinearLayout.VERTICAL);
+            recyler_view.setLayoutManager(manager);
+            homePageAdapter = new HomePageAdapter(getContext(), locale, resources, lists);
+            recyler_view.setAdapter(homePageAdapter);
         getData(page, limit);
 
         nestedScrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {

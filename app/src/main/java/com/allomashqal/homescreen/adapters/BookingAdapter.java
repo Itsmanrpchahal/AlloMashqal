@@ -13,7 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.allomashqal.R;
 import com.allomashqal.helper.LocaleHelper;
+import com.allomashqal.homescreen.fragments.response.BookingResponse;
 import com.google.android.material.button.MaterialButton;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,11 +26,13 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
     Context context;
     String locale;
     Resources resources;
+    ArrayList<BookingResponse.Appointment> bookingResponses;
 
-    public BookingAdapter(Context context, String locale, Resources resources) {
+    public BookingAdapter(Context context, String locale, Resources resources, ArrayList<BookingResponse.Appointment> bookingResponses1) {
         this.context = context;
         this.locale = locale;
         this.resources = resources;
+        this.bookingResponses = bookingResponses1;
     }
 
 
@@ -50,18 +55,18 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
     holder.booking_edit.setText(resources.getText(R.string.edit));
-    holder.booking_name.setText(resources.getText(R.string.name));
-    holder.booking_status.setText(resources.getText(R.string.bookingstatus));
-    holder.booking_orderdetail.setText(resources.getText(R.string.orderdetails));
-    holder.booking_date.setText(resources.getText(R.string.bookingdate));
-    holder.booking_totalbill.setText(resources.getText(R.string.totalbill));
+    holder.booking_name.setText(bookingResponses.get(position).getProviderName());
+    holder.booking_status.setText(bookingResponses.get(position).getStatus());
+    holder.booking_orderdetail.setText(bookingResponses.get(position).getTitle());
+    holder.booking_date.setText(bookingResponses.get(position).getDateTime());
+    holder.booking_totalbill.setText("KD "+bookingResponses.get(position).getPrice());
     }
 
 
 
     @Override
     public int getItemCount() {
-        return 10;
+        return bookingResponses.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

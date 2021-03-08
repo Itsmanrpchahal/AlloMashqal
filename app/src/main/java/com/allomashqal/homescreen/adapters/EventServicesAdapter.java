@@ -67,8 +67,8 @@ public class EventServicesAdapter extends RecyclerView.Adapter<EventServicesAdap
 
         Context context1 = LocaleHelper.setLocale(context, locale);
         Resources resources = context1.getResources();
-        holder.servicetext.setText(eventServiceDataResponseArrayList.get(position).getTitle());
-        holder.pricetext.setText(eventServiceDataResponseArrayList.get(position).getPrice());
+        holder.servicetext.setText(eventServiceDataResponseArrayList.get(position).getTitle().toString());
+        holder.pricetext.setText("KD "+eventServiceDataResponseArrayList.get(position).getPrice().toString());
         holder.select_bt.setText(resources.getText(R.string.select));
 
 
@@ -88,8 +88,8 @@ public class EventServicesAdapter extends RecyclerView.Adapter<EventServicesAdap
                         calendar.set(Calendar.YEAR,year);
                         calendar.set(Calendar.MONTH,month);
                         calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth);
-                        holder.select_date_bt.setText(dayOfMonth+"/"+month+"/"+year);
-                        selectedDate = dayOfMonth+"/"+month+"/"+year;
+                        holder.select_date_bt.setText(year+"-"+month+"-"+dayOfMonth);
+                        selectedDate = year+"-"+month+"-"+dayOfMonth;
                         notifyDataSetChanged();
                     }
                 };
@@ -116,7 +116,7 @@ public class EventServicesAdapter extends RecyclerView.Adapter<EventServicesAdap
                     calendar.set(Calendar.MINUTE,minute);
                         Calendar startCalenderTime = Calendar.getInstance();
                         holder.select_time_bt.setText(hourOfDay+":"+minute);
-                        selectedTime = hourOfDay+"/"+minute;
+                        selectedTime = hourOfDay+":"+minute;
                     }
                 },hour,minute,true);
                 timePickerDialog.show();
@@ -146,7 +146,7 @@ public class EventServicesAdapter extends RecyclerView.Adapter<EventServicesAdap
 
     @Override
     public int getItemCount() {
-        return 12;
+        return eventServiceDataResponseArrayList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
