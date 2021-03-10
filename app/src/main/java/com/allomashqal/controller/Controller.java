@@ -3,6 +3,8 @@ package com.allomashqal.controller;
 import com.allomashqal.Retrofit.WebAPI;
 import com.allomashqal.SignIn.response.SignInResponse;
 import com.allomashqal.SignUp.response.SignUpResponse;
+import com.allomashqal.chat.response.ChatResponse;
+import com.allomashqal.chat.response.SendChatResponse;
 import com.allomashqal.homescreen.eventservicesscreen.BookServiceResponse;
 import com.allomashqal.homescreen.fragments.response.BookingResponse;
 import com.allomashqal.homescreen.fragments.response.GetProfileResponse;
@@ -28,6 +30,8 @@ public class Controller {
     public EventServiceAPI eventServiceAPI;
     public BookServiceAPI bookServiceAPI;
     public BookingAPI bookingAPI;
+    public ChatAPI chatAPI;
+    public SendChatAPI sendChatAPI;
 
     public Controller(SignUpAPI signUp) {
         signUpAPI = signUp;
@@ -67,6 +71,13 @@ public class Controller {
     public Controller(BookingAPI booking)
     {
         bookingAPI = booking;
+        webAPI = new WebAPI();
+    }
+
+    public Controller(ChatAPI chat,SendChatAPI sendChat)
+    {
+        chatAPI = chat;
+        sendChatAPI = sendChat;
         webAPI = new WebAPI();
     }
 
@@ -214,6 +225,38 @@ public class Controller {
         });
     }
 
+    public void Chat(String senderID,String recieverID)
+    {
+        webAPI.getApi().chat(senderID, recieverID).enqueue(new Callback<ChatResponse>() {
+            @Override
+            public void onResponse(Call<ChatResponse> call, Response<ChatResponse> response) {
+                Response<ChatResponse> chatResponseResponse = response;
+                chatAPI.onSuccessChat(chatResponseResponse);
+            }
+
+            @Override
+            public void onFailure(Call<ChatResponse> call, Throwable t) {
+                chatAPI.onError(t.getMessage());
+            }
+        });
+    }
+
+    public void SendChat(String senderID,String recieverID,String mesg)
+    {
+        webAPI.getApi().sendChat(senderID, recieverID, mesg).enqueue(new Callback<SendChatResponse>() {
+            @Override
+            public void onResponse(Call<SendChatResponse> call, Response<SendChatResponse> response) {
+                Response<SendChatResponse> sendChatResponseResponse = response;
+                sendChatAPI.onSuccessSendChat(sendChatResponseResponse);
+            }
+
+            @Override
+            public void onFailure(Call<SendChatResponse> call, Throwable t) {
+                sendChatAPI.onError(t.getMessage());
+            }
+        });
+    }
+
   public interface SignUpAPI {
         void onSuccessSignUp(Response<SignUpResponse> success);
         void onError(String error);
@@ -256,6 +299,16 @@ public class Controller {
 
     public interface BookingAPI {
         void onSuccessBookoing(Response<BookingResponse> success);
+        void onError(String error);
+    }
+
+    public interface ChatAPI {
+        void onSuccessChat(Response<ChatResponse> success);
+        void onError(String error);
+    }
+
+    public interface SendChatAPI {
+        void onSuccessSendChat(Response<SendChatResponse> success);
         void onError(String error);
     }
 }

@@ -3,20 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.allomashqal">
 
-
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
-    <uses-permission android:name="android.permission.CAMERA"></uses-permission>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <supports-screens
-        android:smallScreens="true"
-        android:normalScreens="true"
-        android:largeScreens= "true"
         android:anyDensity="true"
-        />
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true" />
 
     <application
         android:allowBackup="true"
@@ -25,14 +23,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Translucent">
-        <activity android:name=".homescreen.eventservicesscreen.EventServicesScreen" android:screenOrientation="portrait" />
-        <activity android:name=".homescreen.HomeScreen" android:screenOrientation="portrait"/>
-        <activity android:name=".dashboard.Dashboard" android:screenOrientation="portrait"/>
-        <activity android:name=".MapScreen.MapScreen" android:screenOrientation="portrait"/>
-        <activity android:name=".SignIn.SignIn" android:screenOrientation="portrait"/>
-        <activity android:name=".SignUp.SignUp" android:screenOrientation="portrait" />
-        <activity android:name=".signupsingin.SignUp_SignIn" android:screenOrientation="portrait" />
-        <activity android:name=".MainActivity" android:screenOrientation="portrait">
+        <activity android:name=".chat.ChatScreen"></activity>
+        <activity
+            android:name=".homescreen.eventservicesscreen.EventServicesScreen"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".homescreen.HomeScreen"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".dashboard.Dashboard"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MapScreen.MapScreen"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SignIn.SignIn"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SignUp.SignUp"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".signupsingin.SignUp_SignIn"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -43,8 +58,6 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-
-
     </application>
 
 </manifest>

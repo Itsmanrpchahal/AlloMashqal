@@ -2,6 +2,8 @@ package com.allomashqal.Retrofit;
 
 import com.allomashqal.SignIn.response.SignInResponse;
 import com.allomashqal.SignUp.response.SignUpResponse;
+import com.allomashqal.chat.response.ChatResponse;
+import com.allomashqal.chat.response.SendChatResponse;
 import com.allomashqal.homescreen.eventservicesscreen.BookServiceResponse;
 import com.allomashqal.homescreen.fragments.response.BookingResponse;
 import com.allomashqal.homescreen.fragments.response.GetProfileResponse;
@@ -91,5 +93,19 @@ public interface ApiInterface {
     @GET("my-appointments")
     Call<BookingResponse> booking(
             @Query("userid") String userid
+    );
+
+    @GET("get-chat")
+    Call<ChatResponse> chat(
+            @Query("sender_id") String sender_id,
+            @Query("reciever_id") String reciever_id
+    );
+
+    @FormUrlEncoded
+    @POST("send-message")
+    Call<SendChatResponse> sendChat(
+            @Field("sender_id") String sender_id,
+            @Field("reciever_id") String reciever_id,
+            @Field("message") String message
     );
 }

@@ -77,6 +77,17 @@ this.message = message;
         @SerializedName("provider_name")
         @Expose
         private String providerName;
+        @SerializedName("vendor_id")
+        @Expose
+        private String vendor_id;
+
+        public String getVendor_id() {
+            return vendor_id;
+        }
+
+        public void setVendor_id(String vendor_id) {
+            this.vendor_id = vendor_id;
+        }
 
         public String getId() {
             return id;

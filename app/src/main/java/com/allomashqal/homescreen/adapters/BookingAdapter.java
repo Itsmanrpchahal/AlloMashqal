@@ -1,6 +1,7 @@
 package com.allomashqal.homescreen.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.allomashqal.R;
+import com.allomashqal.chat.ChatScreen;
 import com.allomashqal.helper.LocaleHelper;
 import com.allomashqal.homescreen.fragments.response.BookingResponse;
 import com.google.android.material.button.MaterialButton;
@@ -60,6 +62,14 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
     holder.booking_orderdetail.setText(bookingResponses.get(position).getTitle());
     holder.booking_date.setText(bookingResponses.get(position).getDateTime());
     holder.booking_totalbill.setText("KD "+bookingResponses.get(position).getPrice());
+
+
+    holder.startchat.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            context.startActivity(new Intent(context, ChatScreen.class).putExtra("vendorID",bookingResponses.get(position).getVendor_id()));
+        }
+    });
     }
 
 
@@ -70,7 +80,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        Button booking_edit;
+        Button booking_edit,startchat;
         TextView booking_name,booking_status,booking_orderdetail,booking_date,booking_totalbill;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -80,6 +90,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
             booking_orderdetail = itemView.findViewById(R.id.booking_orderdetail);
             booking_date = itemView.findViewById(R.id.booking_date);
             booking_totalbill = itemView.findViewById(R.id.booking_totalbill);
+            startchat = itemView.findViewById(R.id.startchat);
         }
     }
 }
