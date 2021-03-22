@@ -12,6 +12,7 @@ import com.allomashqal.homescreen.fragments.response.NotificationsResponse;
 import com.allomashqal.homescreen.fragments.response.UpdateProfileResponse;
 import com.allomashqal.homescreen.response.EventServiceDataResponse;
 import com.allomashqal.homescreen.response.SalonListResponse;
+import com.allomashqal.offers.response.OffersResponse;
 
 import okhttp3.MultipartBody;
 import retrofit2.Call;
@@ -32,6 +33,7 @@ public class Controller {
     public BookingAPI bookingAPI;
     public ChatAPI chatAPI;
     public SendChatAPI sendChatAPI;
+    public OffersAPI offersAPI;
 
     public Controller(SignUpAPI signUp) {
         signUpAPI = signUp;
@@ -78,6 +80,13 @@ public class Controller {
     {
         chatAPI = chat;
         sendChatAPI = sendChat;
+        webAPI = new WebAPI();
+    }
+
+    public Controller(OffersAPI offers,BookingAPI booking)
+    {
+        offersAPI = offers;
+        bookingAPI = booking;
         webAPI = new WebAPI();
     }
 
@@ -193,9 +202,9 @@ public class Controller {
         });
     }
 
-    public void BookService(String userid,String providerid,String serviceid,String price,String datetime)
+    public void BookService(String userid,String providerid,String serviceid,String price,String datetime,String booking_type)
     {
-        webAPI.getApi().bookservice(userid, providerid, serviceid, price, datetime).enqueue(new Callback<BookServiceResponse>() {
+        webAPI.getApi().bookservice(userid, providerid, serviceid, price, datetime,booking_type).enqueue(new Callback<BookServiceResponse>() {
             @Override
             public void onResponse(Call<BookServiceResponse> call, Response<BookServiceResponse> response) {
                 Response<BookServiceResponse> bookServiceResponseResponse = response;
@@ -257,6 +266,21 @@ public class Controller {
         });
     }
 
+    public void Offers(String userID)
+    {
+        webAPI.getApi().offers(userID).enqueue(new Callback<OffersResponse>() {
+            @Override
+            public void onResponse(Call<OffersResponse> call, Response<OffersResponse> response) {
+                offersAPI.onSuccessOffers(response);
+            }
+
+            @Override
+            public void onFailure(Call<OffersResponse> call, Throwable t) {
+                offersAPI.onError(t.getMessage());
+            }
+        });
+    }
+
   public interface SignUpAPI {
         void onSuccessSignUp(Response<SignUpResponse> success);
         void onError(String error);
@@ -309,6 +333,11 @@ public class Controller {
 
     public interface SendChatAPI {
         void onSuccessSendChat(Response<SendChatResponse> success);
+        void onError(String error);
+    }
+
+    public interface OffersAPI {
+        void onSuccessOffers(Response<OffersResponse> success);
         void onError(String error);
     }
 }

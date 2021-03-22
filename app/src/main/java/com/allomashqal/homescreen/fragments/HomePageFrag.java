@@ -83,11 +83,11 @@ public class HomePageFrag extends BaseFragment implements Controller.SalonListAP
         resources = context.getResources();
         // type = getStringVal(Constants.TYPE);
 
-            LinearLayoutManager manager = new LinearLayoutManager(getContext());
-            manager.setOrientation(LinearLayout.VERTICAL);
-            recyler_view.setLayoutManager(manager);
-            homePageAdapter = new HomePageAdapter(getContext(), locale, resources, lists);
-            recyler_view.setAdapter(homePageAdapter);
+        LinearLayoutManager manager = new LinearLayoutManager(getContext());
+        manager.setOrientation(LinearLayout.VERTICAL);
+        recyler_view.setLayoutManager(manager);
+        homePageAdapter = new HomePageAdapter(getContext(), locale, resources, lists);
+        recyler_view.setAdapter(homePageAdapter);
         getData(page, limit);
 
         nestedScrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
@@ -95,11 +95,10 @@ public class HomePageFrag extends BaseFragment implements Controller.SalonListAP
             public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
                 if (scrollY == v.getChildAt(0).getMeasuredHeight() - v.getMeasuredHeight()) {
                     page++;
-                    if (page<=limit)
-                    {
-                       progress_bar.setVisibility(View.VISIBLE);
+                    if (page <= limit) {
+                        progress_bar.setVisibility(View.VISIBLE);
                         getData(page, limit);
-                    }else  {
+                    } else {
                         progress_bar.setVisibility(View.GONE);
                     }
                 }
@@ -125,7 +124,7 @@ public class HomePageFrag extends BaseFragment implements Controller.SalonListAP
                 recyler_view.setAdapter(homePageAdapter);
             }
         } else {
-            Toast.makeText(getContext(),""+success.message(),Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "" + success.message(), Toast.LENGTH_LONG).show();
         }
     }
 

@@ -222,8 +222,7 @@ public class EventServicesScreen extends BaseActivity implements OnMapReadyCallb
             @Override
             public void onClick(View v) {
                 pd.show();
-                controller.BookService(getStringVal(Constants.USERID),providerID,success.body().getData().getServiceList().get(Integer.parseInt(id)).getId(),success.body().getData().getServiceList().get(Integer.parseInt(id)).getPrice(),selectedDate+" "+selectedTime);
-
+                controller.BookService(getStringVal(Constants.USERID),providerID,success.body().getData().getServiceList().get(Integer.parseInt(id)).getId(),success.body().getData().getServiceList().get(Integer.parseInt(id)).getPrice(),selectedDate+" "+selectedTime,"service");
             }
         });
 

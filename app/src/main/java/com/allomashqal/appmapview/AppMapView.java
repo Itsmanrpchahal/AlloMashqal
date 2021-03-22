@@ -1,10 +1,12 @@
 package com.allomashqal.appmapview;
 
 import android.content.Context;
+import android.location.Location;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
 import com.google.android.gms.maps.MapView;
+import com.google.android.gms.tasks.OnSuccessListener;
 
 public class AppMapView extends MapView {
 
@@ -27,4 +29,7 @@ public class AppMapView extends MapView {
        }
        return super.dispatchTouchEvent(ev);
    }
+
+    public void getMapAsync(OnSuccessListener<Location> locationOnSuccessListener) {
+    }
 }
