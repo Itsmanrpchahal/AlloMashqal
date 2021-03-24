@@ -13,10 +13,13 @@ import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -42,6 +45,8 @@ public class HomePageFrag extends BaseFragment implements Controller.SalonListAP
     @SuppressLint("NonConstantResourceId")
     @BindView(R.id.recyler_view)
     RecyclerView recyler_view;
+    @BindView(R.id.search_et)
+    EditText search_et;
     HomePageAdapter homePageAdapter;
     NestedScrollView nestedScrollView;
     ProgressBar progress_bar;
@@ -54,6 +59,7 @@ public class HomePageFrag extends BaseFragment implements Controller.SalonListAP
     Resources resources;
     ArrayList<SalonListResponse.Data.List> lists = new ArrayList<>();
     int page = 1, limit;
+    String search;
 
     private static int currentPage;
     private static int NUM_PAGES;
@@ -105,7 +111,31 @@ public class HomePageFrag extends BaseFragment implements Controller.SalonListAP
             }
         });
 
+        listeners();
+
         return view;
+    }
+
+    private void listeners() {
+        search_et.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                search = s.toString();
+                controller.SalonList("salon", getStringVal(Constants.LAT), getStringVal(Constants.LNG), String.valueOf(page),search);
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                search = s.toString();
+                controller.SalonList("salon", getStringVal(Constants.LAT), getStringVal(Constants.LNG), String.valueOf(page),search);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                search = s.toString();
+                controller.SalonList("salon", getStringVal(Constants.LAT), getStringVal(Constants.LNG), String.valueOf(page),search);
+            }
+        });
     }
 
 
@@ -114,6 +144,7 @@ public class HomePageFrag extends BaseFragment implements Controller.SalonListAP
     public void onSuccessSalonList(Response<SalonListResponse> success) {
         pd.dismiss();
         //lists = new ArrayList<>();
+        lists.clear();
         if (success.isSuccessful()) {
             limit = success.body().getData().getTotalPage();
             for (int i = 0; i < success.body().getData().getList().size(); i++) {
@@ -123,14 +154,12 @@ public class HomePageFrag extends BaseFragment implements Controller.SalonListAP
                 homePageAdapter = new HomePageAdapter(getContext(), locale, resources, lists);
                 recyler_view.setAdapter(homePageAdapter);
             }
-        } else {
-            Toast.makeText(getContext(), "" + success.message(), Toast.LENGTH_LONG).show();
         }
     }
 
     private void getData(int pagee, int limit) {
         progress_bar.setVisibility(View.VISIBLE);
-        controller.SalonList("salon", getStringVal(Constants.LAT), getStringVal(Constants.LNG), String.valueOf(pagee));
+        controller.SalonList("salon", getStringVal(Constants.LAT), getStringVal(Constants.LNG), String.valueOf(pagee),search);
     }
 
     @Override

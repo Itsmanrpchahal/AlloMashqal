@@ -11,6 +11,7 @@ import com.allomashqal.homescreen.fragments.response.NotificationsResponse;
 import com.allomashqal.homescreen.fragments.response.UpdateProfileResponse;
 import com.allomashqal.homescreen.response.EventServiceDataResponse;
 import com.allomashqal.homescreen.response.SalonListResponse;
+import com.allomashqal.offers.response.OffersResponse;
 
 import okhttp3.MultipartBody;
 import retrofit2.Call;
@@ -50,7 +51,8 @@ public interface ApiInterface {
             @Query("type") String type,
             @Query("latitude") String latitude,
             @Query("longitude") String longitude,
-            @Query("page") String page
+            @Query("page") String page,
+            @Query("search") String search
     );
 
     @GET("my-profile")
@@ -87,7 +89,8 @@ public interface ApiInterface {
             @Field("providerid") String providerid,
             @Field("serviceid") String serviceid,
             @Field("price") String price,
-            @Field("datetime") String datetime
+            @Field("datetime") String datetime,
+            @Field("booking_type") String booking_type
     );
 
     @GET("my-appointments")
@@ -107,5 +110,10 @@ public interface ApiInterface {
             @Field("sender_id") String sender_id,
             @Field("reciever_id") String reciever_id,
             @Field("message") String message
+    );
+
+    @GET("offers")
+    Call<OffersResponse> offers(
+            @Query("userid") String userid
     );
 }

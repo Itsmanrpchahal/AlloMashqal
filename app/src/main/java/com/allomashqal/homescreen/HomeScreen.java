@@ -29,6 +29,8 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
@@ -39,6 +41,7 @@ import android.view.WindowManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,6 +54,7 @@ import com.allomashqal.appmapview.AppMapView;
 import com.allomashqal.controller.Controller;
 import com.allomashqal.helper.LocaleHelper;
 import com.allomashqal.homescreen.adapters.TimeAdapter;
+import com.allomashqal.homescreen.eventservicesscreen.BookServiceResponse;
 import com.allomashqal.homescreen.eventservicesscreen.EventServicesScreen;
 import com.allomashqal.homescreen.fragments.HomePageFrag;
 import com.allomashqal.homescreen.fragments.IF.getTime_IF;
@@ -92,7 +96,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import retrofit2.Response;
 
-public class HomeScreen extends BaseActivity implements Controller.OffersAPI, Controller.BookingAPI, OnMapReadyCallback {
+public class HomeScreen extends BaseActivity implements Controller.OffersAPI, Controller.BookServiceAPI, OnMapReadyCallback {
 
     @BindView(R.id.container)
     FrameLayout container;
@@ -102,6 +106,10 @@ public class HomeScreen extends BaseActivity implements Controller.OffersAPI, Co
     TextView typetv;
     @BindView(R.id.offer_bt)
     TextView offer_bt;
+    @BindView(R.id.search_et)
+    EditText search_et;
+    @BindView(R.id.search_bt)
+    ImageButton search_bt;
     FragmentManager manager;
     FragmentTransaction fragmentTransaction;
     String type;
@@ -237,6 +245,8 @@ public class HomeScreen extends BaseActivity implements Controller.OffersAPI, Co
                 return false;
             }
         });
+
+
     }
 
     @SuppressLint("WrongConstant")
@@ -351,26 +361,23 @@ public class HomeScreen extends BaseActivity implements Controller.OffersAPI, Co
                     @Override
                     public void onClick(View v) {
 
-                        if (select_date.getText().toString().isEmpty() && Selectedtime.equals(""))
-                        {
+                        if (select_date.getText().toString().isEmpty() && Selectedtime.equals("")) {
                             select_date.requestFocus();
                             select_date.setError("Select Date");
-                            Toast.makeText(context,"Select time",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "Select time", Toast.LENGTH_SHORT).show();
 
-                        } else  if (select_date.getText().toString().isEmpty())
-                        {
+                        } else if (select_date.getText().toString().isEmpty()) {
                             select_date.requestFocus();
                             select_date.setError("Select Date");
-                        } else  if (Selectedtime.equals(""))
-                        {
-                            Toast.makeText(context,"Select time",Toast.LENGTH_SHORT).show();
-                        } else  {
+                        } else if (Selectedtime.equals("")) {
+                            Toast.makeText(context, "Select time", Toast.LENGTH_SHORT).show();
+                        } else {
                             pd.show();
                             pd.setContentView(R.layout.loading);
                             controller.BookService(getStringVal(Constants.USERID), offersResponses.get(Integer.parseInt(id)).getProvider_id(), offersResponses.get(Integer.parseInt(id)).getId(), offersResponses.get(Integer.parseInt(id)).getPrice(), select_date.getText().toString() + " " + Selectedtime, "offer");
 
                         }
-                         }
+                    }
                 });
 
                 select_date.setOnClickListener(new View.OnClickListener() {
@@ -465,14 +472,26 @@ public class HomeScreen extends BaseActivity implements Controller.OffersAPI, Co
 
     }
 
+//    @Override
+//    public void onSuccessBookoing(Response<BookingResponse> success) {
+//        pd.dismiss();
+//        if (success.isSuccessful()) {
+//           // datetimeDialog.dismiss();
+//            confirmation_dialog();
+//        }
+//
+//    }
+
     @Override
-    public void onSuccessBookoing(Response<BookingResponse> success) {
+    public void onSuccessBookService(Response<BookServiceResponse> success) {
         pd.dismiss();
         if (success.isSuccessful()) {
+            offerDetails.dismiss();
             datetimeDialog.dismiss();
             confirmation_dialog();
+        } else {
+            Toast.makeText(this, "" + success.message(), Toast.LENGTH_SHORT).show();
         }
-
     }
 
     @Override

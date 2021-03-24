@@ -83,10 +83,10 @@ public class Controller {
         webAPI = new WebAPI();
     }
 
-    public Controller(OffersAPI offers,BookingAPI booking)
+    public Controller(OffersAPI offers,BookServiceAPI booking)
     {
         offersAPI = offers;
-        bookingAPI = booking;
+        bookServiceAPI = booking;
         webAPI = new WebAPI();
     }
 
@@ -122,9 +122,9 @@ public class Controller {
         });
     }
 
-    public void SalonList(String type, String latitude, String longitude, String page)
+    public void SalonList(String type, String latitude, String longitude, String page,String search)
     {
-        webAPI.getApi().salonList(type, latitude, longitude, page).enqueue(new Callback<SalonListResponse>() {
+        webAPI.getApi().salonList(type, latitude, longitude, page,search).enqueue(new Callback<SalonListResponse>() {
             @Override
             public void onResponse(Call<SalonListResponse> call, Response<SalonListResponse> response) {
                 Response<SalonListResponse> salonListResponseResponse = response;

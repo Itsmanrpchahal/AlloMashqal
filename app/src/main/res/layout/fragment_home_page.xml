@@ -15,6 +15,44 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/search_bt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_search"
+                android:layout_below="@id/type"
+                android:layout_margin="@dimen/margin_8dp"
+                android:visibility="visible"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="@dimen/margin_16dp"
+                android:background="@android:color/transparent">
+
+            </ImageButton>
+
+
+            <EditText
+                android:id="@+id/search_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/search_bt"
+                android:visibility="visible"
+                android:backgroundTint="@color/gold"
+                android:inputType="text"
+                android:singleLine="true"
+                android:layout_marginRight="@dimen/margin_8dp"
+                android:layout_marginBottom="2dp"
+                android:layout_marginLeft="@dimen/margin_8dp"
+                android:layout_toLeftOf="@id/offer_bt"
+                android:layout_below="@+id/type">
+
+            </EditText>
+        </LinearLayout>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyler_view"
             android:layout_width="match_parent"
