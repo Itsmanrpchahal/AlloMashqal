@@ -175,7 +175,7 @@
                         android:id="@+id/code"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="+971"
+                        android:text="+966"
                         android:textColor="@color/gold"
                         android:textSize="18sp"
                         android:layout_marginTop="@dimen/margin_16dp"
